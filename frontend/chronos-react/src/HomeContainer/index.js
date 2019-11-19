@@ -86,6 +86,44 @@ class HomeContainer extends Component {
 
         console.log(deleteTimelineParsed, ' <= response from Flask server');
     }
+    closeAndEdit = async (e) => {
+        // put request, then update state
+        e.preventDefault();
 
+        try {
+
+            const editResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/${this.state.timelineToEdit.id}`, {
+                method: 'PUT',
+                body: JSON.stringify(this.state.timelineToEdit),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const editResponseParsed = await editResponse.json();
+            console.log(editResponseParsed, " parsed edit");
+
+            const newTimelineArrayWithEdit = this.state.timelines.map((timeline) => {
+
+                if (timeline.id === editResponseParsed.data.id) {
+                    timeline = editResponseParsed.data
+                }
+
+                return timeline;
+
+            });
+
+            this.setState({
+                showEditModal: false,
+                timelines: newTimelineArrayWithEdit
+            });
+            
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
+    
 
 }
