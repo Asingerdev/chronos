@@ -137,6 +137,16 @@ class HomeContainer extends Component {
         })
 
     }
+    
+    handleEditChange = (e) => {
 
+        this.setState({
+            timelineToEdit: {
+                ...this.state.timelineToEdit,
+                [e.currentTarget.title]: e.currentTarget.value
+            }
+        });
+    }
+    
 
 }
