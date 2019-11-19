@@ -121,9 +121,22 @@ class HomeContainer extends Component {
         } catch (err) {
             console.log(err);
         }
+     
+        
+    }
+
+    openAndEdit = (timelineFromTheList) => {
+        console.log(timelineFromTheList, " timeline to edit");
+
+
+        this.setState({
+            showEditModal: true,
+            timelineToEdit: {
+                ...timelineFromTheList
+            }
+        })
 
     }
 
-    
 
 }
