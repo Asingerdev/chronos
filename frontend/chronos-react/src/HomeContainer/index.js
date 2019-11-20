@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TimeList from '../TimeList'
+import ModalContainer from '../ModalContainer'
 
 class HomeContainer extends Component {
     constructor() {
@@ -153,7 +154,6 @@ class HomeContainer extends Component {
         return (
             <React.Fragment>
                 <TimeList timelines={this.state.timelines} />
-
             </React.Fragment>
         )
     }
