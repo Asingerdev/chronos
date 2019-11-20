@@ -52,3 +52,13 @@ def update_timeline(id):
     timeline_dict = model_to_dict(timeline)
 
     return jsonify(data=timeline_dict, status={"code": 200, "message": "resource uodated successfully"})
+
+# DELETE ROUTE
+@timeline.route('/<id>', methods=["DELETE"])
+def delete_timeline(id):
+
+    query = models.Timeline.delete().where(models.Timeline.id==id)
+    query.execute()
+
+    return jsonify(data='resource successfully deleted', status={"code": 200, "message": "resource deleted successfully"})
+
