@@ -1,5 +1,6 @@
 import React from 'react';
 import TimeShow from './TimeShow';
+// import ModalContainer from './ModalContainer';
 
 // <Route exact path="/timelines/:id" render={(props) => <TimeShow {...props} />}/
 
@@ -19,6 +20,8 @@ const TimeShow = (props) => {
                     <img src={event.event_thumbnail} alt={event.event_name} />
                     <h3>{event.event_date}</h3>
                     <p>{event.event_desc}</p>
+                    {/* Event - Edit route component goes here */}
+                    {/* Event - Delete route component */}
                 </div>
             </div>
         )
@@ -28,11 +31,18 @@ const TimeShow = (props) => {
     
     }); // end foundTimeline.events.map
 
+    // We will need to idiomatically pass down props from HomeContainer, to TimeList,
+    // all the way down to this TimeShow.
+
     return (
         <React.Fragment>
             <h1>{foundTimeline.title}</h1>
             <h2>{foundTimeline.date_from}</h2>
             <h2>{foundTimeline.date_to}</h2>
+
+            <button onClick={ () => props.openAndEdit(foundTimeline) } >Edit Timeline</button>
+            button
+            <button onClick={ () => props.deleteTimeline(foundTimeline.timeline_id) } >Delete Timeline</button>
             {eventsList}
 
         </React.Fragment>
