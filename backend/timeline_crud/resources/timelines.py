@@ -39,14 +39,16 @@ def get_one_timeline(id):
     return jsonify(data=model_to_dict(timeline), status={"code": 200, "message": "Success"})
 
 # # UPDATE ROUTE
-# @timeline.route('/<id>', methods=['PUT'])
-# def update_timeline(id):
-#     payload = request.get_json()
-#     print(payload)
+@timeline.route('/<id>', methods=['PUT'])
+def update_timeline(id):
+    payload = request.get_json()
+    print(payload)
 
-#     query = models.Timeline.update(**payload).where(models.Timeline.id == id)
-#     query.executed()
+    query = models.Timeline.update(**payload).where(models.Timeline.id == id)
+    query.execute()
 
-#     timeline = models.Timeline.get_by_id(id)
+    timeline = models.Timeline.get_by_id(id)
 
-#     timeline_dict = model
+    timeline_dict = model_to_dict(timeline)
+
+    return jsonify(data=timeline_dict, status={"code": 200, "message": "resource uodated successfully"})
