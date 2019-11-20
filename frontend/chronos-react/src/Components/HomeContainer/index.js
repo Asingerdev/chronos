@@ -154,7 +154,7 @@ class HomeContainer extends Component {
         return (
             <React.Fragment>
                 <TimeList timelines={this.state.timelines} />
-                <ModalContainer />
+                <ModalContainer addTimeline={this.addTimeline} />
             </React.Fragment>
         )
     }

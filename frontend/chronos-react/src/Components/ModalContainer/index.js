@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Modal from '../Modal';
+import MainModal from '../Modal/index';
 
 class ModalContainer extends Component {
     state = { show: true };
@@ -16,10 +16,37 @@ class ModalContainer extends Component {
     render() {
         return (
             <main>
-                <h1>Create Timeline</h1>
-                <Modal show={this.state.show} handleClose={this.hideModal}>
-                    <p>I am a modal</p>
-                </Modal>
+                <MainModal show={this.state.show} handleClose={this.hideModal}>
+                    <header>
+                        <h1>Create Timeline</h1>
+                    </header>
+                    <form>
+                        <label>
+                            Title:
+                            </label>
+                        <input type="text" />
+
+                        <label>
+                            Date from:
+                             </label>
+                        <input type="date" />
+
+                        <label>
+                            Date to:
+                        </label>
+                        <input type="date" />
+
+                        <label>
+                            Thumbnail:
+                        </label>
+                        <input type="text" placeholder="url" />
+
+                    </form>
+                    <footer>
+                        <button onClick={() => this.props.addTimeline()} id="submit">Submit</button>
+                        <button id="close">Close</button>
+                    </footer>
+                </MainModal>
             </main>
         );
     }
