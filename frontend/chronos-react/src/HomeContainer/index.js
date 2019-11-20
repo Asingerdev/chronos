@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TimeList from '../TimeList'
 
 class HomeContainer extends Component {
     constructor() {
@@ -9,7 +10,7 @@ class HomeContainer extends Component {
             loggedUser: false
         }
 
-       
+
     }
 
     componentDidMount() {
@@ -18,7 +19,7 @@ class HomeContainer extends Component {
     getTimelines = async () => {
 
         try {
-        
+
             const timelines = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines`, {
                 credentials: 'include',
                 method: "Get"
@@ -26,19 +27,19 @@ class HomeContainer extends Component {
 
             const parsedTimelines = await timelines.json();
             console.log(parsedTimelines);
-            
+
             this.setState({
                 // MAY need to change data property here
                 timelines: parsedTimelines.data
             });
- 
+
         } catch (err) {
             console.log(err);
         }
 
     }
     addTimeline = async (e, timeline) => {
-        e.preventDefault(); 
+        e.preventDefault();
         console.log(timeline);
 
         try {
@@ -71,8 +72,8 @@ class HomeContainer extends Component {
 
         console.log(id);
         const deleteTimelineResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines`, {
-                                                            method: 'DELETE',
-                                                            credentials: 'include'
+            method: 'DELETE',
+            credentials: 'include'
         });
 
         // parsed response from timeline
@@ -81,7 +82,7 @@ class HomeContainer extends Component {
 
         // after removing from db, delete specific timeline from state
         this.setState({
-            timelines: this.state.timelines.filter( (timeline) => timeline.id != id )
+            timelines: this.state.timelines.filter((timeline) => timeline.id != id)
         });
 
         console.log(deleteTimelineParsed, ' <= response from Flask server');
@@ -117,12 +118,12 @@ class HomeContainer extends Component {
                 showEditModal: false,
                 timelines: newTimelineArrayWithEdit
             });
-            
+
         } catch (err) {
             console.log(err);
         }
-     
-        
+
+
     }
 
     openAndEdit = (timelineFromTheList) => {
@@ -137,7 +138,7 @@ class HomeContainer extends Component {
         })
 
     }
-    
+
     handleEditChange = (e) => {
 
         this.setState({
@@ -151,7 +152,8 @@ class HomeContainer extends Component {
     render() {
         return (
             <React.Fragment>
-                This is the HomeContainer!
+                <TimeList timelines={this.state.timelines} />
+
             </React.Fragment>
         )
     }
