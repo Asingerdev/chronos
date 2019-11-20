@@ -20,16 +20,17 @@ def get_all_timelines():
 @timeline.route('/', methods=["POST"])
 def create_timelines():
     payload = request.get_json()
+    print(payload, 'this is payload-------')
 
     timeline = models.Timeline.create(**payload)
 
     print(dir(timeline))
 
-    timeline_dict = model_to_dict(dog)
-    return jsonify(data=dog_dict, status={"code": 201, "message": "Success"})
+    timeline_dict = model_to_dict(timeline)
+    return jsonify(data=timeline_dict, status={"code": 201, "message": "Success"})
 
 # SHOW ROUTE
-@timeline.route('/<id>', method=["GET"])
+@timeline.route('/<id>', methods=["GET"])
 def get_one_timeline(id):
     print(id)
 

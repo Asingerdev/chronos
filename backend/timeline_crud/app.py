@@ -1,6 +1,7 @@
-import os
+
 from flask import Flask, jsonify, g
 
+from flask_cors import CORS
 
 from resources.timelines import timeline
 
@@ -12,6 +13,7 @@ PORT = 8000
 # Initialize an instance of the Flask class.
 # This starts the website!
 app = Flask(__name__)
+CORS(app)
 
 @app.before_request
 def before_request():
@@ -26,6 +28,9 @@ def after_request(response):
     g.db.close()
     return response
 
+CORS(timeline, origins=['http://localhost:3000'],supports_credentials=True)
+
+app.register_blueprint(timeline, url_prefix='/api/v1/timelines') 
 # # The default URL ends in / ("my-website.com/").
 # @app.route('/')
 # def index():
