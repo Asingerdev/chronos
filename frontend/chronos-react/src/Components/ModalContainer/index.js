@@ -36,9 +36,14 @@ class ModalContainer extends Component {
                         </label>
                         <input type="date" />
 
+                        <label>
+                            Thumbnail:
+                        </label>
+                        <input type="text" placeholder="url" />
+
                     </form>
                     <footer>
-                        <button id="submit">Submit</button>
+                        <button onClick={() => this.props.addTimeline()} id="submit">Submit</button>
                         <button id="close">Close</button>
                     </footer>
                 </MainModal>
