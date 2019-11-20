@@ -2,6 +2,8 @@ import React from 'react';
 import TimeShow from './TimeShow';
 // import ModalContainer from './ModalContainer';
 
+import { ShowDiv, Image } from './style';
+
 // <Route exact path="/timelines/:id" render={(props) => <TimeShow {...props} />}/
 
 // Each timeline has an array of events
@@ -16,7 +18,9 @@ const TimeShow = (props) => {
         
         return (
             <div>
+                <ShowDiv />
                 <div key={i} >
+                    <Image />
                     <img src={event.event_thumbnail} alt={event.event_name} />
                     <h3>{event.event_date}</h3>
                     <p>{event.event_desc}</p>
