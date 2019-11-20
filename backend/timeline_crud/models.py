@@ -10,6 +10,7 @@ class Timeline(Model):
     title = CharField()
     date_from = DateField()
     date_to = DateField()
+    thumbnail = CharField()
     created_at = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
