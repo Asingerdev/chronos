@@ -10,7 +10,7 @@ const MainModal = ({ handleClose, show, children }) => {
         <Modal show={show}>
             <div className={toggleShow}>
                 <a href="#" className="close">X</a>
-                <section className="modal-main">
+                <section>
                     {children}
                 </section>
             </div>
