@@ -20,9 +20,6 @@ class ModalContainer extends Component {
                 <Modal show={this.state.show} handleClose={this.hideModal}>
                     <p>I am a modal</p>
                 </Modal>
-                <Modal show={this.state.show} handleClose={this.hideModal}>
-                    <p>modal two</p>
-                </Modal>
             </main>
         );
     }
