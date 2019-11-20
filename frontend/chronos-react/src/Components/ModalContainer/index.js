@@ -17,21 +17,30 @@ class ModalContainer extends Component {
         return (
             <main>
                 <MainModal show={this.state.show} handleClose={this.hideModal}>
-                    <h1>Create Timeline</h1>
+                    <header>
+                        <h1>Create Timeline</h1>
+                    </header>
                     <form>
                         <label>
                             Title:
-                            <input type="text"></input>
-                        </label>
+                            </label>
+                        <input type="text" />
+
                         <label>
                             Date from:
-                            <input type="date" ></input>
-                        </label>
+                             </label>
+                        <input type="date" />
+
                         <label>
                             Date to:
-                            <input type="date"></input>
                         </label>
+                        <input type="date" />
+
                     </form>
+                    <footer>
+                        <button id="submit">Submit</button>
+                        <button id="close">Close</button>
+                    </footer>
                 </MainModal>
             </main>
         );

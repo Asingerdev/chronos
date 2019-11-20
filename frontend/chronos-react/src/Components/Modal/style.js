@@ -1,6 +1,6 @@
 import style from 'styled-components'
 
-export const Modal = style.div`
+const Modal = style.div`
     display: ${props => props.show ? 'block' : 'none'};
     position: fixed;
     top: 0;
@@ -8,41 +8,67 @@ export const Modal = style.div`
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
-   
+
     section {
         position: fixed;
-        text-align: center;
         background: white;
-        width: 60%;
+        width: 60 %;
         height: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 50 %;
+        left: 50 %;
+        transform: translate(-50 %, -50 %);
     }
 
+
     h1 {
-        margin: 20px 0;
-        font-size: 2em;
+        margin: 20px 0 5px 0;
+        font - size: 2em;
+        text - align: center;
+            &: hover {
+            background - color: red;
+        }
     }
 
     form {
-        margin: 0 auto;
         padding: 20px;
-    }
-
-    label, input {
-        flex-basis: 100px;
+        margin: 0 auto;
     }
 
     label {
-        font-size: 1.5em;
+        font - size: 1.5em;
+        display: flex;
+        margin - top: 10px;
     }
 
     input {
-        margin-top: 10px;
-        width: 50%;
+        margin - top: 10px;
+        width: 50 %;
         display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        justify - content: space - between;
+        flex - wrap: wrap;
+        font - size: 15px;
+    }
+
+    footer {
+        display: flex;
+        justify - content: center;
+        padding: 10px;
+    }
+
+    button {
+        font - size: 20px;
+        opacity: .8;
+    }
+
+    #submit {
+        display: flex;
+        margin - right: 20px;
+    }
+
+    #close {
+        display: flex;
+        margin - left: 10px;
     }
 `
+
+export { Modal }
