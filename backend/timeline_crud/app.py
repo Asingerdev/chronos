@@ -2,7 +2,7 @@ import os
 from flask import Flask, jsonify, g
 
 
-# from resources.timelines import timeline
+from resources.timelines import timeline
 
 import models
 
@@ -26,10 +26,10 @@ def after_request(response):
     g.db.close()
     return response
 
-# The default URL ends in / ("my-website.com/").
-@app.route('/')
-def index():
-    return 'hi'
+# # The default URL ends in / ("my-website.com/").
+# @app.route('/')
+# def index():
+#     return 'hi'
 
 # Run the app when the program starts!
 if __name__ == '__main__':
