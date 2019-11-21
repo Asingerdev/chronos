@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HomeContainer from './Components/HomeContainer'
+import TimeContainer from './Components/TimeContainer'
 
 function App() {
   return (
     <div className="App">
-      <HomeContainer />
+      <TimeContainer />
     </div>
   );
 }

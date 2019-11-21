@@ -1,12 +1,14 @@
 import style from 'styled-components'
 
 export const Modal = style.div`
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
+    transition: ease-in 0.2s;
 
     section {
         position: fixed;
@@ -18,13 +20,15 @@ export const Modal = style.div`
         transform: translate(-50%, -50%);
     }
 
+    header {
+        border-bottom: 2px solid lightgray;
+        margin: 10px 0;
+    }
+
     h1 {
-        margin: 20px 0 5px 0;
         font-size: 2em;
         text-align: center;
-            &:hover {
-            background-color: red;
-        }
+        margin-bottom: 5px;
     }
 
     form {
@@ -56,15 +60,35 @@ export const Modal = style.div`
     button {
         font-size: 20px;
         opacity: .8;
+        margin: 5px 10px 0 10px;
     }
 
     #submit {
         display: flex;
-        margin-right: 20px;
+        justify-content: center;
+        background: darkblue;
+        width: 40%;
+        text-align: center;
+        border-radius: 5px;
+        text-align: center;
+        height: 30px;
     }
 
     #close {
         display: flex;
-        margin-left: 10px;
+        justify-content: center;
+        background: darkred;
+        width: 40%;
+        text-align: center;
+        border-radius: 5px;
+        text-align: center;
+        height: 30px;
     }
+
+    p {
+        color: white;
+        display: flex;
+    }
+
+
 `
