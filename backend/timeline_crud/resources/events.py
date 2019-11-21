@@ -39,3 +39,14 @@ def get_event(id):
         return jsonify(data=event_dict, status={"code": 200, "message": "event accepted"})
     except:
         return jsonify(data={}, status={"code": 401, "message": "error bag not found"})
+
+# UPDATE ROUTE
+@event.route('/<id>', methods=["PUT"])
+def update_event(id):
+    try:
+        payload = request.get_json()
+        query = models.Event.update(**payload).where(models.Event.id==id)
+        query.execute()
+        return jsonify(data=model_to_dict(models.Event.get_by_id(id)), status={"code": 201, "message": "event updated"})
+    except:
+        return jsonify(data={}, status={"code": 401, "message": "no event there"})
