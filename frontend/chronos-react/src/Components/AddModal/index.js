@@ -20,34 +20,36 @@ class AddModal extends Component {
     render() {
         return (
             <Modal>
-                <header>
-                    <h1>Add Timeline</h1>
-                </header>
-                <form onSubmit={(e) => addTimeline(e, this.state)}>
-                    <label>
-                        Title:
+                <section>
+                    <header>
+                        <h1>Add Timeline</h1>
+                    </header>
+                    <form onSubmit={(e) => this.props.addTimeline(e, this.state)}>
+                        <label>
+                            Title:
                             </label>
-                    <input type='text' name='title' value={this.state.title} onChange={this.handleChange} />
+                        <input type='text' name='title' value={this.state.title} onChange={this.handleChange} />
 
-                    <label>
-                        Date from:
+                        <label>
+                            Date from:
                              </label>
-                    <input type='text' name='date_from' value={this.state.date_from} onChange={this.handleChange} placeholder='yyyy-mm-dd' />
+                        <input type='text' name='date_from' value={this.state.date_from} onChange={this.handleChange} placeholder='yyyy-mm-dd' />
 
-                    <label>
-                        Date to:
+                        <label>
+                            Date to:
                         </label>
-                    <input type='text' name='date_to' value={this.state.date_to} onChange={this.handleChange} placeholder='yyyy-mm-dd' />
+                        <input type='text' name='date_to' value={this.state.date_to} onChange={this.handleChange} placeholder='yyyy-mm-dd' />
 
-                    <label>
-                        Thumbnail:
+                        <label>
+                            Thumbnail:
                         </label>
-                    <input type='text' name='thumbnail' value={this.state.thumbnail} onChange={this.handleChange} placeholder='url' />
-                    <footer>
-                        <button id='submit'>Submit</button>
-                        <button id='close'>Close</button>
-                    </footer>
-                </form>
+                        <input type='text' name='thumbnail' value={this.state.thumbnail} onChange={this.handleChange} placeholder='url' />
+                        <footer>
+                            <button id='submit'><p>Create Timeline</p></button>
+                            <button id='close' onClick={this.props.closeModal}><p>Close</p></button>
+                        </footer>
+                    </form>
+                </section>
             </Modal>
         )
     }
