@@ -4,7 +4,7 @@ from flask import Blueprint, jsonify, request
 
 from playhouse.shortcuts import model_to_dict
 
-timeline = Blueprint('timelines', 'timeline', url_prefix='/timeline')
+timeline = Blueprint('timelines', 'timeline')
 
 # INDEX ROUTE
 @timeline.route('/', methods=["GET"])
