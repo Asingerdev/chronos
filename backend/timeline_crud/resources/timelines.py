@@ -10,7 +10,8 @@ timeline = Blueprint('timelines', 'timeline', url_prefix='/timeline')
 @timeline.route('/', methods=["GET"])
 def get_all_timelines():
     try:
-        timelines = [model_to_dict(timeline) for timeline in models.Timeline.select()]
+        timelines = [model_to_dict(timeline)
+                     for timeline in models.Timeline.select()]
         print(timelines)
         return jsonify(data=timelines, status={"code": 200, "message": "Success"})
     except models.DoesNotExist:
@@ -57,8 +58,7 @@ def update_timeline(id):
 @timeline.route('/<id>', methods=["DELETE"])
 def delete_timeline(id):
 
-    query = models.Timeline.delete().where(models.Timeline.id==id)
+    query = models.Timeline.delete().where(models.Timeline.id == id)
     query.execute()
 
     return jsonify(data='resource successfully deleted', status={"code": 200, "message": "resource deleted successfully"})
-

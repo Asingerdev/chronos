@@ -6,7 +6,7 @@ from playhouse.shortcuts import model_to_dict
 
 event = Blueprint('events', 'event')
 
-#INDEX ROUTE
+# INDEX ROUTE
 @event.route('/', methods=["GET"])
 def get_all_events():
     try:
@@ -19,4 +19,4 @@ def get_all_events():
 # @event.route('/<timeline_id>', methods=["GET"])
 # def get_timeline_events():
 #     try:
-#         events = 
+#         events =
