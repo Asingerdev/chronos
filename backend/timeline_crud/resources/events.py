@@ -22,6 +22,18 @@ event = Blueprint('events', 'event')
 #         events =
 
 # CREATE ROUTE
-@event.route('/<id>', methods=["POST"])
+@event.route('/<timeline_id>', methods=["POST"])
 def create_events():
-    payload = re
+    payload = request.get_json()
+    event = models.Event.create(**payload)
+    event_dict = model_to_dict(event)
+    return jsonify(data=event_dict, status={"code": 201, "message": "success bag acquired"})
+
+# SHOW ROUTE
+@event.route('/<timeline_id>/event/<event_id>', methods=["GET"])
+def get_event(id):
+    event = model_to_dict
+    (models.Event.get_by_id(id))
+    print(model_to_dict(event))
+    return jsonify(data=event, status={"code": 200, "message": "event accepted"})
+    return jsonify(data={}, status={"code": 401, "message": "error bag not found"})
