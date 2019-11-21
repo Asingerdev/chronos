@@ -45,12 +45,12 @@ class HomeContainer extends Component {
 
         try {
             // createdTimelineResponse stores response from Flask API
-            const createdTimelineResponse = await fetch(`http://localhost:8000/v1/api/timelines/`, {
+            const createdTimelineResponse = await fetch(`http://localhost:8000/api/v1/timelines/`, {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify(timeline),
                 headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             });
 
