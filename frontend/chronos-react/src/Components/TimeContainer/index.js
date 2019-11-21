@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TimeList from '../TimeList'
 import AddModal from '../AddModal'
 
-class HomeContainer extends Component {
+class TimeContainer extends Component {
     constructor() {
         super();
 
@@ -11,10 +11,7 @@ class HomeContainer extends Component {
             loggedUser: false,
             showModal: true
         }
-
-
     }
-
     componentDidMount() {
         this.getTimelines();
     }
@@ -62,8 +59,7 @@ class HomeContainer extends Component {
             this.setState({
                 timelines: [...this.state.timelines, parsedResponse.data]
             });
-
-
+            this.closeModal();
         } catch (err) {
             console.log('error');
             console.log(err);
@@ -124,14 +120,9 @@ class HomeContainer extends Component {
         } catch (err) {
             console.log(err);
         }
-
-
     }
-
     openAndEdit = (timelineFromTheList) => {
         console.log(timelineFromTheList, " timeline to edit");
-
-
         this.setState({
             showEditModal: true,
             timelineToEdit: {
@@ -140,7 +131,6 @@ class HomeContainer extends Component {
         })
 
     }
-
     handleEditChange = (e) => {
 
         this.setState({
@@ -150,6 +140,17 @@ class HomeContainer extends Component {
             }
         });
     }
+    showModal = () => {
+        this.setState({
+            showModal: true
+        })
+    }
+    closeModal = () => {
+        this.setState({
+            showModal: false
+        })
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -157,14 +158,13 @@ class HomeContainer extends Component {
                 {
                     this.state.showModal
                         ?
-                        <AddModal addTimeline={this.addTimeline} />
+                        <AddModal addTimeline={this.addTimeline} closeModal={this.closeModal} />
                         :
                         null
                 }
             </React.Fragment>
         )
     }
-
 }
 
-export default HomeContainer;
+export default TimeContainer;
