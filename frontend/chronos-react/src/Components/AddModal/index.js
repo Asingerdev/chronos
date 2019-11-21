@@ -44,8 +44,7 @@ class AddModal extends Component {
                         </label>
                     <input type='text' name='thumbnail' value={this.state.thumbnail} onChange={this.handleChange} placeholder='url' />
                     <footer>
-                        <button id='submit'>Submit</button>
-                        <button id='close'>Close</button>
+                        <button id='submit'>Create Timeline</button>
                     </footer>
                 </form>
             </Modal>

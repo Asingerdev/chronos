@@ -150,6 +150,11 @@ class HomeContainer extends Component {
             }
         });
     }
+
+    toggleModal = () => {
+
+    }
+
     render() {
         return (
             <React.Fragment>
