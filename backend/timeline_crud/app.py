@@ -4,8 +4,10 @@ from flask import Flask, jsonify, g
 from flask_cors import CORS
 
 from resources.timelines import timeline
+from resources.events import event
 
 import models
+
 
 DEBUG = True
 PORT = 8000
@@ -30,9 +32,8 @@ def after_request(response):
     return response
 
 
-CORS(timeline, origins=['http://localhost:3000'], supports_credentials=True)
-
 app.register_blueprint(timeline, url_prefix='/api/v1/timelines')
+app.register_blueprint(event, url_prefix='/api/v1/events')
 # # The default URL ends in / ("my-website.com/").
 # @app.route('/')
 # def index():
