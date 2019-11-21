@@ -3,53 +3,67 @@ import ReactDOM from 'react-dom';
 import MainModal from '../Modal/index';
 
 class ModalContainer extends Component {
-    state = { show: true };
+    constructor() {
+        super();
 
-    showModal = () => {
-        this.setState({ show: true });
-    };
-
-    hideModal = () => {
-        this.setState({ show: false });
-    };
+        this.state = {
+            title: '',
+            date_from: '',
+            date_to: '',
+            thumbnail: ''
+        }
+    }
+    handleChange = (e) => {
+        this.setState({ [e.currentTarget.name]: e.currentTarget.value })
+    }
 
     render() {
         return (
             <main>
-                <MainModal show={this.state.show} handleClose={this.hideModal}>
-                    <header>
-                        <h1>Create Timeline</h1>
-                    </header>
-                    <form>
-                        <label>
-                            Title:
+                <header>
+                    <h1>Create Timeline</h1>
+                </header>
+                <form onSubmit={(e) => this.props.addTimeline(e, this.state)}>
+                    <label>
+                        Title:
                             </label>
-                        <input type="text" />
+                    <input type='text' name='title' value={this.state.title} onChange={this.handleChange} />
 
-                        <label>
-                            Date from:
+                    <label>
+                        Date from:
                              </label>
-                        <input type="date" />
+                    <input type='text' name='date_from' value={this.state.date_from} onChange={this.handleChange} placeholder='yyyy-mm-dd' />
 
-                        <label>
-                            Date to:
+                    <label>
+                        Date to:
                         </label>
-                        <input type="date" />
+                    <input type='text' name='date_to' value={this.state.date_to} onChange={this.handleChange} placeholder='yyyy-mm-dd' />
 
-                        <label>
-                            Thumbnail:
+                    <label>
+                        Thumbnail:
                         </label>
-                        <input type="text" placeholder="url" />
-
-                    </form>
+                    <input type='text' name='thumbnail' value={this.state.thumbnail} onChange={this.handleChange} placeholder='url' />
                     <footer>
-                        <button onClick={() => this.props.addTimeline()} id="submit">Submit</button>
-                        <button id="close">Close</button>
+                        <button id='submit'>Submit</button>
+                        <button id='close'>Close</button>
                     </footer>
-                </MainModal>
+
+                </form>
+
             </main>
         );
     }
 }
 
 export default ModalContainer
+
+// < MainModal show = { this.state.show } handleClose = { this.hideModal } >
+// </MainModal >
+
+// showModal = () => {
+//     this.setState({ show: true });
+// };
+
+// hideModal = () => {
+//     this.setState({ show: false });
+// };
