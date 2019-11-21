@@ -11,6 +11,9 @@ class Timeline(Model):
     date_from = DateField()
     date_to = DateField()
     thumbnail = CharField()
+    events = [
+        CharField()
+        ]
     created_at = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
