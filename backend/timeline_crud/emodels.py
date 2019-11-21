@@ -1,20 +1,9 @@
-# import * means import everything from peewee
 import datetime
 from peewee import *
 from playhouse.db_url import connect
 
-DATABASE = SqliteDatabase('timelines.sqlite')
+DATABASE = SqliteDatabase('events.sqlite')
 
-
-class Timeline(Model):
-    title = CharField()
-    date_from = DateField()
-    date_to = DateField()
-    thumbnail = CharField()
-    created_at = DateTimeField(default=datetime.datetime.now)
-
-    class Meta:
-        database = DATABASE
 
 class Event(Model):
     event_name = CharField()
@@ -31,6 +20,6 @@ class Event(Model):
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([Timeline, Event], safe=True)
+    DATABASE.create_tables([Event], safe=True)
     print("TABLES Created")
     DATABASE.close()
