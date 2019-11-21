@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import TimeList from '../TimeList'
 import AddModal from '../AddModal'
 
+
+
+
 class TimeContainer extends Component {
     constructor() {
         super();
@@ -153,15 +156,18 @@ class TimeContainer extends Component {
 
     render() {
         return (
+
             <React.Fragment>
-                <TimeList timelines={this.state.timelines} />
-                {
-                    this.state.showModal
-                        ?
-                        <AddModal addTimeline={this.addTimeline} closeModal={this.closeModal} />
-                        :
-                        null
-                }
+                    
+               {
+                   this.state.showModal
+                      ?
+                       <AddModal addTimeline={this.addTimeline} closeModal={this.closeModal} />
+                       :
+                    null
+               }
+               <TimeList timelines={this.state.timelines} />
+                
             </React.Fragment>
         )
     }
