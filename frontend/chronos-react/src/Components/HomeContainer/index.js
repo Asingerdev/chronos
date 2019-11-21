@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TimeList from '../TimeList'
-import ModalContainer from '../ModalContainer'
+import AddModal from '../AddModal'
 
 class HomeContainer extends Component {
     constructor() {
@@ -8,7 +8,8 @@ class HomeContainer extends Component {
 
         this.state = {
             timelines: [],
-            loggedUser: false
+            loggedUser: false,
+            showModal: true
         }
 
 
@@ -149,12 +150,17 @@ class HomeContainer extends Component {
             }
         });
     }
-
     render() {
         return (
             <React.Fragment>
                 <TimeList timelines={this.state.timelines} />
-                <ModalContainer addTimeline={this.addTimeline} />
+                {
+                    this.state.showModal
+                        ?
+                        <AddModal addTimeline={this.addTimeline} />
+                        :
+                        null
+                }
             </React.Fragment>
         )
     }

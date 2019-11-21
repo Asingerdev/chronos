@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import MainModal from '../Modal/index';
 
-class ModalContainer extends Component {
+import { Modal } from './style'
+
+class AddModal extends Component {
     constructor() {
         super();
 
@@ -16,14 +17,13 @@ class ModalContainer extends Component {
     handleChange = (e) => {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value })
     }
-
     render() {
         return (
-            <main>
+            <Modal>
                 <header>
-                    <h1>Create Timeline</h1>
+                    <h1>Add Timeline</h1>
                 </header>
-                <form onSubmit={(e) => this.props.addTimeline(e, this.state)}>
+                <form onSubmit={(e) => addTimeline(e, this.state)}>
                     <label>
                         Title:
                             </label>
@@ -47,10 +47,10 @@ class ModalContainer extends Component {
                         <button id='submit'>Submit</button>
                         <button id='close'>Close</button>
                     </footer>
-
                 </form>
-
-            </main>
-        );
+            </Modal>
+        )
     }
 }
+
+export default AddModal
