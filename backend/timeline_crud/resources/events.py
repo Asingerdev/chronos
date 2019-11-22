@@ -50,3 +50,10 @@ def update_event(id):
         return jsonify(data=model_to_dict(models.Event.get_by_id(id)), status={"code": 201, "message": "event updated"})
     except:
         return jsonify(data={}, status={"code": 401, "message": "no event there"})
+
+# DELETE ROUTE
+@event.route('/<id>', methods=["DELETE"])
+def delete_event(id):
+    query = models.Event.delete().where (models.Event.id==id)
+    query.execute()
+    return jsonify(data='event deleted', status={"code": 200, "message": "event deleted"})
