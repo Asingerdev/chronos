@@ -12,7 +12,7 @@ class TimeContainer extends Component {
         this.state = {
             timelines: [],
             loggedUser: false,
-            showModal: true
+            showModal: null
         }
     }
     componentDidMount() {

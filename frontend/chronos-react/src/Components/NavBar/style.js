@@ -13,6 +13,13 @@ export const NavStyle = style.nav`
   width: 100%;
   top: 0;
   background-color: white;
+
+  text-decoration: none;
+  font-family: sans-serif;
+  margin-left: 0%;
+  text-transform: uppercase;  
+  color: black;
+
   
   main {
     max-width: 75%;
@@ -36,11 +43,5 @@ export const NavStyle = style.nav`
     text-align: right; 
   }
 
-  link {
-    text-decoration: none;
-    margin-left: 3%;
-    text-transform: uppercase;  
-    color: black;
-  }
 
 `

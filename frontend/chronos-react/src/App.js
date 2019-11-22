@@ -8,17 +8,19 @@ import NavBar from './Components/NavBar'
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Switch>
-        <Route exact path="/" />
-        <Route exact path="/timelines" />
-        <Route exact path="/" />
-        <Route exact path="/" />
-        <Route exact path="/" />
+        <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" />
+          <Route exact path="/timelines" />
+          <Route exact path="/" />
+          <Route exact path="/" />
+          <Route exact path="/" />
+          
+        </Switch>
         
-      </Switch>
-      
-      <TimeContainer />
+        <TimeContainer />
+      </BrowserRouter>
     </div>
   );
 }
