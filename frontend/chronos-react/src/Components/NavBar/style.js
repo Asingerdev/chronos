@@ -24,6 +24,10 @@ const NavStyle = style.nav`
     display: flex;
     padding: 15px;
   }
+
+  img {
+    width: 20px;
+  }
   
   div {
     width: 33.333%;
@@ -33,6 +37,13 @@ const NavStyle = style.nav`
   article {
     width: 33.333%;
     text-align: center;
+    font-size: 25px;
+    margin-left: 16.5%;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+     &:hover {
+      color: grey;
+    }
   }
 
   section {
