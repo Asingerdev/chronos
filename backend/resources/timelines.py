@@ -9,6 +9,7 @@ timeline = Blueprint('timelines', 'timeline')
 # INDEX ROUTE
 @timeline.route('/', methods=["GET"])
 def get_all_timelines():
+    print('hit')
     try:
         timelines = [model_to_dict(timeline)
                      for timeline in models.Timeline.select()]
