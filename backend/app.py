@@ -20,6 +20,7 @@ login_manager = LoginManager()
 # Initialize an instance of the Flask class.
 # This starts the website!
 app = Flask(__name__)
+CORS(app)
 
 app.secret_key = "4tri"
 login_manager.init_app(app)

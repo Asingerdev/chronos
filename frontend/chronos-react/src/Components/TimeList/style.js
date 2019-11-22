@@ -21,7 +21,6 @@ const Column = style.div`
     margin-top: 8px;
     vertical-align: middle;
 
-    
     max-width: 100%;
     max-height: 100%;
   }
