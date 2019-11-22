@@ -83,7 +83,7 @@ class TimeContainer extends Component {
 
         // after removing from db, delete specific timeline from state
         this.setState({
-            timelines: this.state.timelines.filter((timeline) => timeline.id != id)
+            timelines: this.state.timelines.filter((timeline) => timeline.id !== id)
         });
 
         console.log(deleteTimelineParsed, ' <= response from Flask server');
