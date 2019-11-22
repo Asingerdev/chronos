@@ -5,16 +5,17 @@ import styled from 'styled-components';
 const NavLink = styled(Link)`
 
   text-decoration: none;
-  font-family: sans-serif;
+  font-size: 12px;
+  font-family: 'Libre Baskerville' , sans-serif;
   margin-left: 2%;
-  padding: 0.48rem;
+  padding: 0.5rem 0.33rem 0.5rem 0.33rem;
   text-transform: uppercase;  
   color: black;
-  border: 2px outset black;
+
   
   &:hover {
-      color: dodgerblue;
-      border: 1px inset black;
+      color: rgb(179, 40, 17);
+      border: 1px inset rgb(179, 40, 17);
   }
 
 
