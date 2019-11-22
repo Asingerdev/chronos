@@ -14,7 +14,9 @@ const NavBar = () => {
                         <NavLink to="/timelines">Timelines</NavLink>      
                     </div>
                     <article >
-
+                        <img src="https://img.icons8.com/material-sharp/452/historical.png" alt="Chronos" />
+                        <br />
+                        Chronos
                     </article>
                     <section>
                         <NavLink to="/">Account</NavLink>
