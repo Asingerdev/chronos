@@ -13,6 +13,7 @@ const NavLink = styled(Link)`
   color: black;
 
   
+  
   &:hover {
       color: rgb(179, 40, 17);
       border: 1px inset rgb(179, 40, 17);
