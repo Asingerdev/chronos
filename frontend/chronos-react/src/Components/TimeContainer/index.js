@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TimeList from '../TimeList'
 import AddModal from '../AddModal'
 
-
+import Button from './style'
 
 
 class TimeContainer extends Component {
@@ -166,8 +166,8 @@ class TimeContainer extends Component {
                        :
                     null
                }
+               <Button onClick={this.showModal}>+ Add Timeline</Button>
                <TimeList timelines={this.state.timelines} />
-                
             </React.Fragment>
         )
     }
