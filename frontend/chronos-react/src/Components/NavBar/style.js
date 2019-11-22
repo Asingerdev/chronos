@@ -17,7 +17,6 @@ const NavStyle = style.nav`
   background-color: white;
 
 
-
   main {
     max-width: 75%;
     margin: 0 auto;
@@ -30,6 +29,7 @@ const NavStyle = style.nav`
   }
   
   div {
+    margin-top: 5.0rem;
     width: 33.333%;
     text-align: left;
   }
@@ -37,7 +37,7 @@ const NavStyle = style.nav`
   article {
     width: 33.333%;
     text-align: center;
-    font-size: 25px;
+    font-size: 28px;
     margin-left: 16.5%;
     border-top: 2px solid grey;
     border-bottom: 2px solid grey;
@@ -47,6 +47,7 @@ const NavStyle = style.nav`
   }
 
   section {
+    margin-top: 5.0rem;
     width: 60%;
     text-align: right; 
   }
