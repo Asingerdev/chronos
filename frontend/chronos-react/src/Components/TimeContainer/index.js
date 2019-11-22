@@ -47,8 +47,8 @@ class TimeContainer extends Component {
         try {
             // createdTimelineResponse stores response from Flask API
             const createdTimelineResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/`, {
-                method: 'POST',
                 credentials: 'include',
+                method: 'POST',
                 body: JSON.stringify(timeline),
                 headers: {
                     'Content-Type': 'application/json'

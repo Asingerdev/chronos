@@ -47,7 +47,7 @@ def after_request(response):
     g.db.close()
     return response
 
-# CORS(timeline, origins=['http://localhost:3000'],supports_credentials=True)
+CORS(timeline, origins=['http://localhost:3000'],supports_credentials=True)
 
 app.register_blueprint(timeline, url_prefix='/api/v1/timelines')
 app.register_blueprint(event, url_prefix='/api/v1/events')
