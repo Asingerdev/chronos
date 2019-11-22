@@ -19,16 +19,15 @@ class TimeContainer extends Component {
         this.getTimelines();
     }
     getTimelines = async () => {
-
+        console.log('hit')
         try {
-
-            const timelines = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines`, {
+            const timelines = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/`, {
                 credentials: 'include',
-                method: "Get"
+                method: "Get",
+                "Content-Type": "application/json"
             });
-
             const parsedTimelines = await timelines.json();
-            console.log(parsedTimelines);
+            console.log(parsedTimelines, 'this is from API call');
 
             this.setState({
                 // MAY need to change data property here
@@ -155,6 +154,7 @@ class TimeContainer extends Component {
     }
 
     render() {
+        console.log(this.state.timelines, 'this is timeline list')
         return (
 
             <React.Fragment>

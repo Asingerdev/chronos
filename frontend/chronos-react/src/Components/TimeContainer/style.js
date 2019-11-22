@@ -4,6 +4,7 @@ const Button = style.button `
 background-color: rgb(179, 40, 17);
 color: white;
 font-size: 2rem;
+
 cursor: pointer;
 }
 `
