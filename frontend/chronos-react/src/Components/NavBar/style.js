@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import style from 'styled-components';
 
 
@@ -6,7 +8,7 @@ import style from 'styled-components';
 // article is "nav-center"
 // section is "nav-right"
 
-export const NavStyle = style.nav`
+const NavStyle = style.nav`
 
   position: fixed;
   border-bottom: 1px solid black;
@@ -14,13 +16,8 @@ export const NavStyle = style.nav`
   top: 0;
   background-color: white;
 
-  text-decoration: none;
-  font-family: sans-serif;
-  margin-left: 0%;
-  text-transform: uppercase;  
-  color: black;
 
-  
+
   main {
     max-width: 75%;
     margin: 0 auto;
@@ -43,5 +40,6 @@ export const NavStyle = style.nav`
     text-align: right; 
   }
 
-
 `
+
+export default NavStyle;
