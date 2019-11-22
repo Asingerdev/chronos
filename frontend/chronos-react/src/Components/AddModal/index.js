@@ -22,7 +22,12 @@ class AddModal extends Component {
             <Modal>
                 <section>
                     <header>
-                        <h1>Add Timeline</h1>
+                        <ul>
+                            <span>
+                             <li><h1>Add Timeline</h1></li>
+                            </span>
+                            <li><div id='close' onClick={this.props.closeModal}></div></li>
+                        </ul>
                     </header>
                     <form onSubmit={(e) => this.props.addTimeline(e, this.state)}>
                         <label>
@@ -46,7 +51,6 @@ class AddModal extends Component {
                         <input type='text' name='thumbnail' value={this.state.thumbnail} onChange={this.handleChange} placeholder='url' />
                         <footer>
                             <button id='submit'><p>Create Timeline</p></button>
-                            <button id='close' onClick={this.props.closeModal}><p>Close</p></button>
                         </footer>
                     </form>
                 </section>

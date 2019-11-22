@@ -8,7 +8,7 @@ import NavBar from './Components/NavBar'
 function App() {
   return (
     <div className="App">
-        <BrowserRouter>
+      <BrowserRouter>
         <NavBar />
         <Switch>
           <Route exact path="/" />
@@ -16,9 +16,7 @@ function App() {
           <Route exact path="/" />
           <Route exact path="/" />
           <Route exact path="/" />
-          
         </Switch>
-        
         <TimeContainer />
       </BrowserRouter>
     </div>
