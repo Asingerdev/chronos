@@ -8,7 +8,7 @@ DATABASE = SqliteDatabase('timelines.sqlite')
 
 class User(UserMixin, Model):
     username = CharField(unique=True)
-    password = CharField
+    password = CharField()
     email = CharField(unique=True)
 
     class Meta:
@@ -20,9 +20,9 @@ class Timeline(Model):
     date_to = DateField()
     thumbnail = CharField()
     events = [
-        CharField()
+        CharField() 
         ]
-    created_at = DateTimeField(default=datetime.datetime.now)
+    created_at = DateTimeField(default=datetime.datetime.now) 
 
     class Meta:
         database = DATABASE
@@ -42,6 +42,6 @@ class Event(Model):
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([Timeline, Event], safe=True)
+    DATABASE.create_tables([User, Timeline, Event], safe=True)
     print("TABLES Created")
-    DATABASE.close()
+    DATABASE.close() 
