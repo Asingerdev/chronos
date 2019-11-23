@@ -71,7 +71,7 @@ class TimeContainer extends Component {
     deleteTimeline = async (id) => {
 
         console.log(id);
-        const deleteTimelineResponse = await fetch(`${process.env.REACT_APP_API_URL} / api / v1 / timelines`, {
+        const deleteTimelineResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/`, {
             method: 'DELETE',
             credentials: 'include'
         });
@@ -93,7 +93,7 @@ class TimeContainer extends Component {
 
         try {
 
-            const editResponse = await fetch(`${process.env.REACT_APP_API_URL} / api / v1 / timelines / ${this.state.timelineToEdit.id}`, {
+            const editResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/${this.state.timelineToEdit.id}`, {
                 method: 'PUT',
                 body: JSON.stringify(this.state.timelineToEdit),
                 headers: {

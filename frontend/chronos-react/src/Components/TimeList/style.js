@@ -8,17 +8,26 @@ const Column = style.div`
   div {
     flex: 50%;
     padding: 0 4px;
-    max-width: 400px;
+    max-width: 200px;
     height: auto;
   }
 
   h2 {
     background-color: black;
-    color: white; 
+    color: white;
+    font-family: 'Libre Baskerville', sans-serif;
+    width: 100px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: uppercase;
   }
 
   img {
-    margin-top: 8px;
     vertical-align: middle;
 
     max-width: 100%;
