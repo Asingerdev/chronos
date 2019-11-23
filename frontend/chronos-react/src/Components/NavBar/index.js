@@ -1,17 +1,17 @@
-import React  from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import NavStyle from './style' 
+import NavStyle from './style'
 import NavLink from './stylelink'
 
 const NavBar = () => {
-    return( 
+    return (
         <NavStyle>
             <nav>
                 <main>
-                    <div > 
+                    <div >
                         <NavLink to="/">Home</NavLink>
-                        <NavLink to="/timelines">Timelines</NavLink>      
+                        <NavLink to="/timelines">Timelines</NavLink>
                     </div>
                     <article >
                         <img src="https://img.icons8.com/material-sharp/452/historical.png" alt="Chronos" />

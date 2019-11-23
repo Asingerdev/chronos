@@ -11,7 +11,7 @@ const EditModal = (props) => {
                         <span>
                             <li><h1>Edit Timeline</h1></li>
                         </span>
-                        <li><div id='close' onClick={this.props.closeModal}></div></li>
+                        <li><div id='close' onClick={props.closeModal}></div></li>
                     </ul>
                 </header>
                 <form onSubmit={props.closeAndEdit}>
