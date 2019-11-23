@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TimeList from '../TimeList'
 import AddModal from '../AddModal'
+import EditModal from '../EditModal'
 
 import Button from './style'
 
@@ -12,7 +13,13 @@ class TimeContainer extends Component {
         this.state = {
             timelines: [],
             loggedUser: false,
-            showModal: null
+            showModal: null,
+            timelineToEdit: {
+                title: '',
+                date_from: '',
+                date_to: '',
+                thumbnail: ''              
+            }
         }
     }
     componentDidMount() {
@@ -39,7 +46,7 @@ class TimeContainer extends Component {
         }
 
     }
-    addTimeline = async (e, timeline) => {
+    closeAndAdd = async (e, timeline) => {
         e.preventDefault();
         console.log(timeline);
 
@@ -162,7 +169,14 @@ class TimeContainer extends Component {
                {
                    this.state.showModal
                       ?
-                       <AddModal addTimeline={this.addTimeline} closeModal={this.closeModal} />
+                        <AddModal closeAndAdd={this.closeAndAdd} closeModal={this.closeModal} />
+                       :
+                    null
+               }
+               {
+                   this.state.showModal
+                      ?
+                       <EditModal openAndEdit={this.openAndEdit} closeAndEdit={this.closeAndEdit} handleEditChange={this.handleEditChange} closeModal={this.closeModal} />
                        :
                     null
                }
