@@ -133,7 +133,7 @@ class TimeContainer extends Component {
     openAndEdit = (timelineFromTheList) => {
         console.log(timelineFromTheList, " timeline to edit");
         this.setState({
-            showEditModal: true,
+            showModal: true,
             timelineToEdit: {
                 ...timelineFromTheList
             }
@@ -176,12 +176,12 @@ class TimeContainer extends Component {
                {
                    this.state.showModal
                       ?
-                       <EditModal openAndEdit={this.openAndEdit} closeAndEdit={this.closeAndEdit} handleEditChange={this.handleEditChange} closeModal={this.closeModal} />
+                       <EditModal openAndEdit={this.openAndEdit} closeAndEdit={this.closeAndEdit} handleEditChange={this.handleEditChange} closeModal={this.closeModal} timelineToEdit={this.state.timelineToEdit} />
                        :
                     null
                }
                <Button onClick={this.showModal}>+ Add Timeline</Button>
-               <TimeList timelines={this.state.timelines} />
+                <TimeList timelines={this.state.timelines} openAndEdit={this.openAndEdit} closeAndEdit={this.closeAndEdit} />
             </React.Fragment>
         )
     }
