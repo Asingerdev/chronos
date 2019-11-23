@@ -19,6 +19,9 @@ const NavLink = styled(Link)`
       border: 1px inset rgb(179, 40, 17);
   }
 
+  @media (max-width: 500px) {
+    font-size: 10px;
+  }
 
 `
 
