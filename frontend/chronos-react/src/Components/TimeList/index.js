@@ -15,6 +15,7 @@ const TimeList = (props) => {
                             <img src={timeline.thumbnail} alt={timeline.title} />
                             <h3>{timeline.date_from} to {timeline.date_to}</h3>
                             <StyleButton onClick={ () => props.openAndEdit(timeline) }>Edit</StyleButton>
+                            <StyleButton onClick={() => props.deleteTimeline(timeline.id)}>Delete</StyleButton>
                         </div>
                         
                     </Column>

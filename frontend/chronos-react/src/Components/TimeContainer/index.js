@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TimeList from '../TimeList'
 import AddModal from '../AddModal'
 import EditModal from '../EditModal'
+import DeleteModal from '../DeleteModal'
 
 import Button from './style'
 
@@ -78,7 +79,7 @@ class TimeContainer extends Component {
     deleteTimeline = async (id) => {
 
         console.log(id);
-        const deleteTimelineResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/`, {
+        const deleteTimelineResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/${id}`, {
             method: 'DELETE',
             credentials: 'include'
         });
@@ -180,8 +181,10 @@ class TimeContainer extends Component {
                        :
                     null
                }
+               
+
                <Button onClick={this.showModal}>+ Add Timeline</Button>
-                <TimeList timelines={this.state.timelines} openAndEdit={this.openAndEdit} closeAndEdit={this.closeAndEdit} />
+                <TimeList timelines={this.state.timelines} openAndEdit={this.openAndEdit} closeAndEdit={this.closeAndEdit} deleteTimeline={this.deleteTimeline} showModal={this.showModal} />
             </React.Fragment>
         )
     }
