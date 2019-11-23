@@ -11,13 +11,13 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route exact path="/" />
-          <Route exact path="/timelines" />
+          <Route exact path="/" component={TimeContainer} />
+          <Route exact path="/timelines" component={TimeContainer} />
           <Route exact path="/" />
           <Route exact path="/" />
           <Route exact path="/" />
         </Switch>
-        <TimeContainer />
+
       </BrowserRouter>
     </div>
   );
