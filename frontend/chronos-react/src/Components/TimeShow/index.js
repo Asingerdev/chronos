@@ -1,8 +1,11 @@
 import React from 'react';
 import TimeShow from './TimeShow';
-// import ModalContainer from './ModalContainer';
+
+import AddEventModal from '../AddEventModal';
+import EditEventModal from '../EditEventModal';
 
 import { ShowDiv, Image } from './style';
+import StyleButton from './stylebutton';
 
 // <Route exact path="/timelines/:id" render={(props) => <TimeShow {...props} />}/
 
@@ -10,6 +13,7 @@ import { ShowDiv, Image } from './style';
 const TimeShow = (props) => {
 
     // May need to pass props from TimeList
+    // We need to pass down the props to get the modals to show and hide
 
     const foundTimeline = props.timelines.filter((timeline) => timeline.timeline_id !== params.timeline_id);
 
@@ -18,15 +22,15 @@ const TimeShow = (props) => {
 
         return (
             <div>
-                <ShowDiv />
-                <div key={i} >
-                    <Image />
-                    <img src={event.event_thumbnail} alt={event.event_name} />
-                    <h3>{event.event_date}</h3>
-                    <p>{event.event_desc}</p>
-                    {/* Event - Edit route component goes here */}
-                    {/* Event - Delete route component */}
-                </div>
+                <ShowDiv>
+                    <div key={i} >
+                        
+                        <Image src={event.event_thumbnail} alt={event.event_name} />
+                        <h3>{event.event_date}</h3>
+                        <p>{event.event_desc}</p>
+
+                    </div>
+                </ShowDiv>    
             </div>
         )
 
