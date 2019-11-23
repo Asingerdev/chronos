@@ -53,6 +53,12 @@ const NavStyle = style.nav`
       margin-right: 4%;
       margin-left: 12.5%;
     }
+
+    @media (max-width: 720px) {
+      font-size: 16px;
+      margin-top: 4%;
+      margin-right: 5%;
+    }
   }
 
   section {
