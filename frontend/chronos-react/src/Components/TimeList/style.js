@@ -8,8 +8,11 @@ const Column = style.div`
   div {
     flex: 50%;
     padding: 0 4px;
-    max-width: 200px;
-    height: auto;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 32px;
   }
 
   h2 {
@@ -30,9 +33,9 @@ const Column = style.div`
   img {
     vertical-align: middle;
 
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 300px;
+    max-height: 400px;
   }
 `;
 
-export default Column
+export default Column;
