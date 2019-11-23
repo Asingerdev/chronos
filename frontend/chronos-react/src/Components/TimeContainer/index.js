@@ -122,7 +122,7 @@ class TimeContainer extends Component {
             });
 
             this.setState({
-                showEditModal: false,
+                showModal: false,
                 timelines: newTimelineArrayWithEdit
             });
 
@@ -145,7 +145,7 @@ class TimeContainer extends Component {
         this.setState({
             timelineToEdit: {
                 ...this.state.timelineToEdit,
-                [e.currentTarget.title]: e.currentTarget.value
+                [e.currentTarget.name]: e.currentTarget.value
             }
         });
     }
