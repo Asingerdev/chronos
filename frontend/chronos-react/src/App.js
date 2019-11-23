@@ -15,7 +15,6 @@ function App() {
           <Route exact path="/timelines" component={TimeContainer} />
           <Route exact path="/" />
           <Route exact path="/" />
-          <Route exact path="/" />
         </Switch>
 
       </BrowserRouter>
