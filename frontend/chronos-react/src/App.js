@@ -5,9 +5,9 @@ import './App.css';
 import TimeContainer from './Components/TimeContainer'
 import NavBar from './Components/NavBar'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div className="App" >
       <BrowserRouter>
         <NavBar />
         <Switch>
