@@ -44,6 +44,21 @@ const NavStyle = style.nav`
      &:hover {
       color: grey;
     }
+    
+
+    @media (max-width: 500px) {
+      font-size: 14px;
+      
+      margin-top: 4%;
+      margin-right: 4%;
+      margin-left: 12.5%;
+    }
+
+    @media (max-width: 720px) {
+      font-size: 16px;
+      margin-top: 4%;
+      margin-right: 5%;
+    }
   }
 
   section {
@@ -51,6 +66,8 @@ const NavStyle = style.nav`
     width: 60%;
     text-align: right; 
   }
+
+
 
 `
 
