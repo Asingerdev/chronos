@@ -1,15 +1,6 @@
 import style from 'styled-components'
 
 export const Modal = style.div`
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    transition: ease-in 0.2s;
-
     section {
         position: fixed;
         background: white;
@@ -20,6 +11,7 @@ export const Modal = style.div`
         transform: translate(-50%, -50%);
         -webkit-animation: animatezoom 0.6s;
         animation: animatezoom 0.6s;
+        border: solid 2px lightgray;
     }
 
     @-webkit-keyframes animatezoom {
@@ -96,6 +88,26 @@ export const Modal = style.div`
         &:after {
             transform: rotate(-45deg);
         }
+    }
+
+    form {
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    label {
+        font-size: 1.5em;
+        display: flex;
+        margin-top: 10px;
+    }
+
+    input {
+        margin-top: 10px;
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 15px;
     }
 
     footer {

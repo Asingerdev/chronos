@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import RegisterModal from '../RegisterModal'
+import LoginModal from '../LoginModal'
+
 
 import NavStyle from './style'
 import NavLink from './stylelink'
@@ -16,8 +18,10 @@ class NavBar extends Component {
         }
     }
 
-    doUpdateCurrentUser = user => {
-        this.setState({ currentUser: user })
+    openRegister = () => {
+        this.setState({
+            showRegisterModal: true
+        })
     }
 
     openLogin = () => {
@@ -26,22 +30,24 @@ class NavBar extends Component {
         })
     }
 
-    closeAndLogUser = () => {
+    closeAndLogUser = user => {
         this.setState({
             loggedUser: true,
-            showLoginModal: false
+            currentUser: user,
+            showLoginModal: false,
+            showRegisterModal: false
         })
     }
 
-    openRegister = () => {
+    openLogin = () => {
         this.setState({
-            showRegisterModal: true
+            showLoginModal: true
         })
     }
 
-    closeAndRegisterUser = () => {
+    closeModal = () => {
         this.setState({
-            loggedUser: true,
+            showLoginModal: false,
             showRegisterModal: false
         })
     }
@@ -61,12 +67,37 @@ class NavBar extends Component {
                             Chronos
                     </article>
                         <section>
-                            <NavLink to="/">Account</NavLink>
-                            <NavLink to="/">Login</NavLink>
-                            <NavLink onClick={this.openRegister}>Register</NavLink>
+                            {
+                                this.state.loggedUser
+                                    ?
+                                    <NavLink>{this.state.currentUser.username}'s Account</NavLink>
+                                    :
+                                    <NavLink onClick={this.openLogin}>Login</NavLink>
+                            }
+                            {
+                                this.state.loggedUser
+                                    ?
+                                    <NavLink>Logout</NavLink>
+                                    :
+                                    <NavLink onClick={this.openRegister}>Register</NavLink>
+                            }
                         </section>
                     </main>
                 </nav>
+                {
+                    this.state.showLoginModal
+                        ?
+                        <LoginModal closeAndLogUser={this.closeAndLogUser} closeModal={this.closeModal} />
+                        :
+                        null
+                }
+                {
+                    this.state.showRegisterModal
+                        ?
+                        <RegisterModal closeAndLogUser={this.closeAndLogUser} closeModal={this.closeModal} />
+                        :
+                        null
+                }
             </NavStyle >
         )
 
