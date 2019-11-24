@@ -9,17 +9,17 @@ const TimeList = (props) => {
                 <div >
                     <h1>Timelines</h1>
                     <Column>
-                        
+
                         <div key={timeline.timeline_id}>
                             <h2>{timeline.title}</h2>
                             <img src={timeline.thumbnail} alt={timeline.title} />
                             <h3>{timeline.date_from} to {timeline.date_to}</h3>
-                            <StyleButton onClick={ () => props.openAndEdit(timeline) }>Edit</StyleButton>
+                            <StyleButton onClick={() => props.openAndEdit(timeline)}>Edit</StyleButton>
                             <StyleButton onClick={() => props.deleteTimeline(timeline.id)}>Delete</StyleButton>
                         </div>
-                        
+
                     </Column>
-                    
+
                 </div>
             </React.Fragment>
         )
@@ -27,7 +27,6 @@ const TimeList = (props) => {
 
     return (
         <div>
-            
             {timelines}
         </div>
     )
