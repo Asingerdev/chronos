@@ -7,12 +7,12 @@ class AddEventModal extends Component {
         super();
 
         this.state = {
-            event_name = '',
-            event_date = '',
-            event_desc = '',
-            event_wiki = '',
-            event_option = '',
-            event_thumbnail = '',
+            event_name : '',
+            event_date : '',
+            event_desc : '',
+            event_wiki : '',
+            event_option : '',
+            event_thumbnail : '',
         }
     }
     handleChange = (e) => {
