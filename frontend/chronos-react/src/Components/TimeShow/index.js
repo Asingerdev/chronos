@@ -1,5 +1,4 @@
 import React from 'react';
-import TimeShow from './TimeShow';
 
 import AddEventModal from '../AddEventModal';
 import EditEventModal from '../EditEventModal';
@@ -28,7 +27,7 @@ const TimeShow = (props) => {
                         <Image src={event.event_thumbnail} alt={event.event_name} />
                         <h3>{event.event_date}</h3>
                         <p>{event.event_desc}</p>
-
+                        <Image src={event.event_thumbnail} />
                     </div>
                 </ShowDiv>    
             </div>
