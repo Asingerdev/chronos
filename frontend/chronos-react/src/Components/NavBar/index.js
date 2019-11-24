@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import RegisterModal from '../RegisterModal'
-import LoginModal from '../LoginModal'
+
 
 import NavStyle from './style'
 import NavLink from './stylelink'
@@ -18,9 +17,9 @@ class NavBar extends Component {
         }
     }
 
-    doUpdateCurrentUser = user => {
+    openRegister = () => {
         this.setState({
-            currentUser: user,
+            showRegisterModal: true
         })
     }
 
@@ -36,12 +35,6 @@ class NavBar extends Component {
             currentUser: user,
             showLoginModal: false,
             showRegisterModal: false
-        })
-    }
-
-    openRegister = () => {
-        this.setState({
-            showRegisterModal: true
         })
     }
 
@@ -81,16 +74,9 @@ class NavBar extends Component {
                     </main>
                 </nav>
                 {
-                    this.state.showLoginModal
-                        ?
-                        <LoginModal closeAndAdd={this.closeAndLogUser} closeModal={this.closeModal} />
-                        :
-                        null
-                }
-                {
                     this.state.showRegisterModal
                         ?
-                        <RegisterModal closeAndRegisterUser={this.closeAndRegisterUser} closeModal={this.closeModal} handleEditChange={this.handleEditChange} timelineToEdit={this.state.timelineToEdit} />
+                        <RegisterModal closeAndLogUser={this.closeAndLogUser} closeModal={this.closeModal} />
                         :
                         null
                 }

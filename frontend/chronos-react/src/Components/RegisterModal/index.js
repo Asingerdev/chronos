@@ -17,8 +17,6 @@ class RegisterModal extends Component {
     }
     handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('this is the handle submit')
-        console.log(process.env)
         const registerResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/register`, {
             method: 'POST',
             credentials: 'include',
@@ -27,13 +25,10 @@ class RegisterModal extends Component {
                 'Content-Type': 'application/json'
             }
         });
-
         const parsedResponse = await registerResponse.json();
-
-        if (parsedResponse.status.message === 'Success') {
+        if (parsedResponse.status.message === 'Success, user is registered') {
             console.log('success login')
-            this.props.doUpdateCurrentUser(parsedResponse.data)
-            this.props.history.push('/games');
+            this.props.closeAndLogUser(parsedResponse.data)
         }
     }
     render() {
@@ -43,7 +38,7 @@ class RegisterModal extends Component {
                     <header>
                         <ul>
                             <span>
-                                <li><h1>Add Timeline</h1></li>
+                                <li><h1>Create Account</h1></li>
                             </span>
                             <li><div id='close' onClick={this.props.closeModal}></div></li>
                         </ul>
@@ -52,17 +47,17 @@ class RegisterModal extends Component {
                         <label>
                             Username:
                             </label>
-                        <input type='text' name='title' value={this.state.title} onChange={this.handleChange} />
+                        <input type='text' name='username' value={this.state.username} onChange={this.handleChange} />
 
                         <label>
                             Password:
                              </label>
-                        <input type='text' name='date_from' value={this.state.date_from} onChange={this.handleChange} placeholder='yyyy-mm-dd' />
+                        <input type='password' name='password' value={this.state.password} onChange={this.handleChange} />
 
                         <label>
                             Email:
                         </label>
-                        <input type='text' name='date_to' value={this.state.date_to} onChange={this.handleChange} placeholder='yyyy-mm-dd' />
+                        <input type='text' name='email' value={this.state.email} onChange={this.handleChange} />
 
                         <footer>
                             <button id='submit'><p>Submit</p></button>
