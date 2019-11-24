@@ -98,6 +98,26 @@ export const Modal = style.div`
         }
     }
 
+    form {
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    label {
+        font-size: 1.5em;
+        display: flex;
+        margin-top: 10px;
+    }
+
+    input {
+        margin-top: 10px;
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 15px;
+    }
+
     footer {
         display: flex;
         justify-content: center;
