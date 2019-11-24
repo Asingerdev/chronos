@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RegisterModal from '../RegisterModal'
+import LoginModal from '../LoginModal'
 
 
 import NavStyle from './style'
@@ -66,13 +67,30 @@ class NavBar extends Component {
                             Chronos
                     </article>
                         <section>
-                            <NavLink to="/">Account</NavLink>
-                            <NavLink to="/">Login</NavLink>
-                            <NavLink onClick={this.openRegister}>Register</NavLink>
-
+                            {
+                                this.state.loggedUser
+                                    ?
+                                    <NavLink>{this.state.currentUser.username}'s Account</NavLink>
+                                    :
+                                    <NavLink onClick={this.openLogin}>Login</NavLink>
+                            }
+                            {
+                                this.state.loggedUser
+                                    ?
+                                    <NavLink>Logout</NavLink>
+                                    :
+                                    <NavLink onClick={this.openRegister}>Register</NavLink>
+                            }
                         </section>
                     </main>
                 </nav>
+                {
+                    this.state.showLoginModal
+                        ?
+                        <LoginModal closeAndLogUser={this.closeAndLogUser} closeModal={this.closeModal} />
+                        :
+                        null
+                }
                 {
                     this.state.showRegisterModal
                         ?

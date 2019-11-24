@@ -54,12 +54,8 @@ CORS(user, origins=['http://localhost:3000'],supports_credentials=True)
 app.register_blueprint(timeline, url_prefix='/api/v1/timelines')
 app.register_blueprint(event, url_prefix='/api/v1/events')
 app.register_blueprint(user, url_prefix='/api/v1/users')
-# # The default URL ends in / ("my-website.com/").
-# @app.route('/')
-# def index():
-#     return 'hi'
 
-# Run the app when the program starts!
+
 if __name__ == '__main__':
     models.initialize()
     app.run(debug=DEBUG, port=PORT)
