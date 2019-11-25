@@ -12,13 +12,12 @@ const TimeList = (props) => {
                     <h1>Timelines</h1>
                     
                     <Column>
-                        <TimeShow timelines={props.timelines} id={timeline.id} />
+                        {/* <TimeShow timelines={props.timelines} id={timeline.id} /> */}
                         <div key={timeline.id}>
-                            <Link to={{
-                                    pathname: `/timelines/${timeline.id}`,
-                                    
-                                }
-                            }><h2>{timeline.title}</h2></Link>
+                            <Link to={`/timelines/${timeline.id}`}>
+                                
+                
+                            <h2>{timeline.title}</h2></Link>
                             <img src={timeline.thumbnail} alt={timeline.title} />
                             <h3>{timeline.date_from} to {timeline.date_to}</h3>
                             <StyleButton onClick={() => props.openAndEdit(timeline)}>Edit</StyleButton>

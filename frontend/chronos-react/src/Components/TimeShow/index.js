@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import AddEventModal from '../AddEventModal';
 import EditEventModal from '../EditEventModal';
@@ -9,62 +9,199 @@ import StyleButton from './stylebutton';
 // <Route exact path="/timelines/:id" render={(props) => <TimeShow {...props} />}/
 
 // Each timeline has an array of events
-const TimeShow = (props) => {
-    console.log(props, " the props")
-    // const timelineId = props.match.params.id
-    const timelineId = props.id
-    console.log(timelineId, " props.id")
+class TimeShow extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            timeline : {},
+            showAddModal: null,
+            showEditModal: null,
+            eventToEdit: {
+                event_name: '',
+                event_date: '',
+                date_desc: '',
+                event_wiki: '',
+                event_option: '',
+                event_thumbnail: '',
+            },
+            events: []
+        }
+
+    }
+
+
     
-    // May need to pass props from TimeList
-    // We need to pass down the props to get the modals to show and hide
 
-    const allTimelines = props.timelines;
-    console.log(allTimelines, " all of the timelines");
+    getTimeline = async () => {
+        const timelineId = this.props.match.params.id;
+        try {
+            const timeline = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/${timelineId}`, {
+                credentials: 'include',
+                method: "Get",
+                "Content-Type": "application/json"
+            });
+            const parsedTimeline = await timeline.json();
+            console.log(parsedTimeline);
+            this.setState({
+                timeline: parsedTimeline.data
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    // getEvents = async () => {
+    //     try {
+    //         const events = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/events/`, {
+    //             credentials: 'include',
+    //             method: "Get",
+    //             "Content-Type": "application/json"
+    //         });
+    //         const parsedEvents = await events.json();
+    //         this.setState({
+    //             events: parsedEvents.data
+    //         });
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
+
+
+    componentDidMount() {
+        this.getTimeline()
+    }
+
+
+
+    closeAndAdd = async (e, event) => {
+        e.preventDefault();
+        try {
+          
+            const createdEventResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/events/`, {
+                credentials: 'include',
+                method: 'POST',
+                body: JSON.stringify(event),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            // convert Flask response into object 
+            const parsedResponse = await createdEventResponse.json();
+            this.setState({
+                events: [...this.state.events, parsedResponse.data],
+                showAddModal: false
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+ 
     
+    closeAndEdit = async (e) => {
+        e.preventDefault();
+        try {
+            const editResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/events/${this.state.eventToEdit.id}`, {
+                method: 'PUT',
+                body: JSON.stringify(this.state.eventToEdit),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const editResponseParsed = await editResponse.json();
+            const newEventArrayWithEdit = this.state.events.map((event) => {
+                if (event.id === editResponseParsed.data.id) {
+                    event = editResponseParsed.data
+                }
+                return event;
+            });
+            this.setState({
+                events: newEventArrayWithEdit,
+                showEditModal: false
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
-    const foundTimeline = allTimelines.filter( timeline => timeline.id !== timeline.timelineId );
-    console.log(foundTimeline, " this is the foundTimeline");
-    // const selectedTimeline = foundTimeline[0];
-    // console.log(selectedTimeline, " <= get the 0 index timeline");
+    openAndEdit = (eventFromTheList) => {
+        this.setState({
+            showEditModal: true,
+            eventToEdit: {
+                ...eventFromTheList
+            }
+        })
+    }
+
+    handleEditChange = (e) => {
+        this.setState({
+            eventToEdit: {
+                ...this.state.eventToEdit,
+                [e.currentTarget.name]: e.currentTarget.value
+            }
+        });
+    }
     
-    
+    showAddModal = () => {
+        this.setState({
+            showAddModal: true
+        })
+    }
+    closeModal = () => {
+        this.setState({
+            showAddModal: false,
+            showEditModal: false
+        })
+    }
 
-    // const eventsList = selectedTimeline.events.map((event, i) => {
-
-
-    //     return (
-    //         <div>
-    //             <ShowDiv>
-    //                 <div key={i} >
-                        
-    //                     <Image src={event.event_thumbnail} alt={event.event_name} />
-    //                     <h3>{event.event_date}</h3>
-    //                     <p>{event.event_desc}</p>
-    //                     <Image src={event.event_thumbnail} />
-    //                 </div>
-    //             </ShowDiv>    
-    //         </div>
-    //     )
-
-
-
-
-    // }); // end foundTimeline.events.map
-
-    // We will need to idiomatically pass down props from HomeContainer, to TimeList,
-    // all the way down to this TimeShow.
-
-    return (
+  
+    render() {
+        return (
         <React.Fragment>
-            {/* {eventsList}
+           <ShowDiv>
+                    <div>
+                    <h1>{this.state.timeline.title}</h1>
+                    <h4>Created: {this.state.timeline.created_at}</h4>
+                        <button onClick={this.showAddModal}>+ Add Event</button>
+                        <h4>Events</h4>
+                        <div>
+                            {this.state.timeline.events}
+                        </div>
+                    </div>
+                    <div>
+                        
+                        <h2>Date From: {this.state.timeline.date_from}</h2>
+                        <h2>Date To: {this.state.timeline.date_to}</h2>
+                        <Image src={this.state.timeline.thumbnail}></Image>
+                    </div>
+                    <div>
+                        {
+                            this.state.showAddModal
+                                ?
+                                <AddEventModal closeAndAdd={this.closeAndAdd} closeModal={this.closeModal} />
+                                :
+                                null
+                        }
+                        {
+                            this.state.showEditModal
+                                ?
+                                <EditEventModal closeAndEdit={this.closeAndEdit} closeModal={this.closeModal} handleEditChange={this.handleEditChange} eventToEdit={this.state.eventToEdit} />
+                                :
+                                null
+                        }
+                        
+                    </div>
+                    
+           </ShowDiv>
+            
 
-            <button onClick={() => props.openAndEdit(foundTimeline)} >Edit Timeline</button>
-            button
-            <button onClick={() => props.deleteTimeline(foundTimeline.timeline_id)} >Delete Timeline</button>
-            {eventsList}  */}
 
         </React.Fragment>
-    )
+        )
+    }
+   
 
 
 };
