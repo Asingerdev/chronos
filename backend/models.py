@@ -15,17 +15,20 @@ class User(UserMixin, Model):
         database = DATABASE
 
 class Timeline(Model):
+    id = PrimaryKeyField(null=False)
     title = CharField()
     date_from = DateField()
     date_to = DateField()
     thumbnail = CharField()
-    events = []
+    # events = []
     created_at = DateTimeField(default=datetime.datetime.now) 
 
     class Meta:
-        database = DATABASE
+        database = DATABASE 
 
 class Event(Model):
+    id = PrimaryKeyField(null=False)
+    timeline = ForeignKeyField(Timeline)
     event_name = CharField()
     event_date = DateField()
     event_desc = CharField()
