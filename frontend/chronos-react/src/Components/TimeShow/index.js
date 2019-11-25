@@ -24,8 +24,8 @@ const TimeShow = (props) => {
 
     const foundTimeline = allTimelines.filter( timeline => timeline.id !== timeline.timelineId );
     console.log(foundTimeline, " this is the foundTimeline");
-    const selectedTimeline = foundTimeline[0];
-    console.log(selectedTimeline, " <= get the 0 index timeline");
+    // const selectedTimeline = foundTimeline[0];
+    // console.log(selectedTimeline, " <= get the 0 index timeline");
     
     
 
