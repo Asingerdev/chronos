@@ -38,7 +38,7 @@ const EditEventModal = (props) => {
                 </section>
             </Modal>
         )
-    }
 }
+
 
 export default EditEventModal
