@@ -28,7 +28,7 @@ class AddModal extends Component {
                             <li><div id='close' onClick={this.props.closeModal}></div></li>
                         </ul>
                     </header>
-                    <form onSubmit={(e) => this.props.addTimeline(e, this.state)}>
+                    <form onSubmit={(e) => this.props.closeAndAdd(e, this.state)}>
                         <label>
                             Title:
                             </label>
