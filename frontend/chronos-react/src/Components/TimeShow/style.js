@@ -14,5 +14,5 @@ export const ShowDiv = style.div`
 export const Image = style.img`
   margin-top: 8px;
   vertical-align: middle;  
-
+  border: 1px solid black;
 `;
