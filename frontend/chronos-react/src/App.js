@@ -14,7 +14,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={TimeContainer} />
           <Route exact path="/timelines" component={TimeContainer} />
-          <Route exact path="/timelines/:id" component={TimeShow} />
+          {/* <Route exact path="/timelines/:id" component={TimeShow} /> */}
           <Route exact path="/" />
         </Switch>
 
