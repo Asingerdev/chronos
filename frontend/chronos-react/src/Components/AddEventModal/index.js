@@ -30,19 +30,19 @@ class AddEventModal extends Component {
                             <li><div id='close' onClick={this.props.closeModal}></div></li>
                         </ul>
                     </header>
-                    <form>
+                    <form onSubmit={(e) => this.props.closeAndAdd(e, this.state)} >
                         <label>Event Name: </label>
-                        <input type="text" name="event_name" value={this.state.event_name} placeholder="Megali Idea" />
+                        <input type="text" name="event_name" value={this.state.event_name} placeholder="Megali Idea" onChange={this.handleChange} />
                         <label>Event Date:</label>
-                        <input type="text" name="event_date" value={this.state.event_date} placeholder="YYYY-DD-MM" />
+                        <input type="text" name="event_date" value={this.state.event_date} placeholder="YYYY-DD-MM" onChange={this.handleChange} />
                         <label>Event Description: </label>
-                        <input type="text" name="event_desc" value={this.state.event_desc} placeholder="event description" />
+                        <input type="text" name="event_desc" value={this.state.event_desc} placeholder="event description" onChange={this.handleChange} />
                         <label>Event Wiki: </label>
-                        <input type="text" name="event_wiki" value={this.state.event_wiki} placeholder="EXACT wikipedia article title" />
+                        <input type="text" name="event_wiki" value={this.state.event_wiki} placeholder="EXACT wikipedia article title" onChange={this.handleChange} />
                         <label>Event Option: </label>
-                        <input type="text" name="event_option" value={this.state.event_option} placeholder="https://youtu.be/jkGVh102Tlw?t=1428" />
-                        <label>Event Thumbnai: </label>
-                        <input type="text" name="event_thumbnail" value={this.state.event_thumbnail} placeholder="image src" />
+                        <input type="text" name="event_option" value={this.state.event_option} placeholder="https://youtu.be/jkGVh102Tlw?t=1428" onChange={this.handleChange} />
+                        <label>Event Thumbnail: </label>
+                        <input type="text" name="event_thumbnail" value={this.state.event_thumbnail} placeholder="image src" onChange={this.handleChange} />
 
                         <footer>
                             <button id='submit'><p>Create Event</p></button>
