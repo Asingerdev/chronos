@@ -18,5 +18,5 @@ export const Image = style.img`
   vertical-align: middle;
   max-height: 500px;
   max-width: 400px;  
-  border: 1px solid black;
+  border: 6px solid black;
 `;

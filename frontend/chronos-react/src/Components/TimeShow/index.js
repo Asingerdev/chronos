@@ -176,14 +176,18 @@ class TimeShow extends Component {
                                     this.state.events.map( (event) => {
                                     return ( <li>
                                         {JSON.stringify(event.event_name)}
-                                        {JSON.stringify(event.event_date)}
+                                        <br/>
+                                        Date: {JSON.stringify(event.event_date)}
+                                        <br/>
                                         {JSON.stringify(event.event_desc)}
                                         {JSON.stringify(event.event_wiki)}
-                                        {JSON.stringify(event.event_option)}
-                                        <img src={event.event_thumbnail} />
+                                        <br/>
+                                        <a href={event.event_option}>YouTube Link</a>
+                                        <br/>
+                                        <Image src={event.event_thumbnail} />
                                         <br/>
                                         <br/>
-                                        {JSON.stringify(event.created_at)}
+                                        Event Creation: {JSON.stringify(event.created_at)}
                                         </li>
                                         
                                     )
