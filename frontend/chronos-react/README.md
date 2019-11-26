@@ -1,68 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chronos
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+Chronos is a full-stack React/Flask application where the user is able to create timelines of any event that happened historically. 
 
-### `npm start`
+## Homepage
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+On the landing page, users can sign up or log into the site, and they will see all of the existing timelines that have been created by other users. Once logged in, users can view other people's timeline, or create their own timelines to contribute to the community. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Timelines
 
-### `npm test`
+On each timeline's page, users see a list of all the events in that timeline in chronological order. If the user created that timeline, they can add, delete, or edit events on it. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Events
 
-### `npm run build`
+Each event includes information not only about the title and date of the event, but also a quick summary and links to videos, pictures or infographics that correspond to the event. 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Future Versions
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+In future versions we would like to integrate the MediaWiki API in order to extract summaries of events from Wikipedia to include in the summary section of the events. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+React, Flask, Peewee, SQLite, Playhouse, bcrypt, Styled Components
