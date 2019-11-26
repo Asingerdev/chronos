@@ -49,6 +49,7 @@ def after_request(response):
     return response
 
 CORS(timeline, origins=['http://localhost:3000'],supports_credentials=True)
+CORS(event, origins=['http://localhost:3000'], supports_credentials=True)
 CORS(user, origins=['http://localhost:3000'],supports_credentials=True)
 
 app.register_blueprint(timeline, url_prefix='/api/v1/timelines')
