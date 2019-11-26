@@ -180,7 +180,7 @@ class TimeShow extends Component {
                                         {JSON.stringify(event.event_desc)}
                                         {JSON.stringify(event.event_wiki)}
                                         {JSON.stringify(event.event_option)}
-                                        <img src={JSON.stringify(event.event_thumbnail)} />
+                                        <img src={event.event_thumbnail} />
                                         <br/>
                                         <br/>
                                         {JSON.stringify(event.created_at)}
