@@ -37,8 +37,12 @@ def get_one_timeline(id):
     print(id)
 
     timeline = models.Timeline.get_by_id(id)
+    events = [model_to_dict(event) for event in models.Event.select().join(
+        models.Timeline).where(models.Timeline.id == id)]
+    
+    print(events, "THIS IS EVENTS!!!!!!")
 
-    return jsonify(data=model_to_dict(timeline), status={"code": 200, "message": "Success"})
+    return jsonify(data={"timeline": model_to_dict(timeline), "events": events}, status={"code": 200, "message": "Success"})
 
 # # UPDATE ROUTE
 @timeline.route('/<id>', methods=['PUT'])

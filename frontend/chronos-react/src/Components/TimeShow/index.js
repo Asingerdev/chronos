@@ -23,7 +23,7 @@ class TimeShow extends Component {
                 date_desc: '',
                 event_wiki: '',
                 event_option: '',
-                event_thumbnail: '',
+                event_thumbnail: ''
             },
             events: []
         }
@@ -44,7 +44,8 @@ class TimeShow extends Component {
             const parsedTimeline = await timeline.json();
             console.log(parsedTimeline);
             this.setState({
-                timeline: parsedTimeline.data
+                timeline: parsedTimeline.data.timeline,
+                events: parsedTimeline.data.events
             });
         } catch (err) {
             console.log(err);
@@ -76,6 +77,8 @@ class TimeShow extends Component {
 
     closeAndAdd = async (e, event) => {
         e.preventDefault();
+        event.timeline = this.props.match.params.id;
+        console.log(event)
         try {
           
             const createdEventResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/events/`, {
@@ -167,7 +170,27 @@ class TimeShow extends Component {
                         <button onClick={this.showAddModal}>+ Add Event</button>
                         <h4>Events</h4>
                         <div>
-                            {this.state.timeline.events}
+                            <ul>
+                                
+                                {
+                                    this.state.events.map( (event) => {
+                                    return ( <li>
+                                        {JSON.stringify(event.event_name)}
+                                        {JSON.stringify(event.event_date)}
+                                        {JSON.stringify(event.event_desc)}
+                                        {JSON.stringify(event.event_wiki)}
+                                        {JSON.stringify(event.event_option)}
+                                        <img src={JSON.stringify(event.event_thumbnail)} />
+                                        <br/>
+                                        <br/>
+                                        {JSON.stringify(event.created_at)}
+                                        </li>
+                                        
+                                    )
+                                    } )
+                                }
+                                
+                            </ul>
                         </div>
                     </div>
                     <div>

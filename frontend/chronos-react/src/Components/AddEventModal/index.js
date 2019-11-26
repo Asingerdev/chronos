@@ -13,6 +13,7 @@ class AddEventModal extends Component {
             event_wiki : '',
             event_option : '',
             event_thumbnail : '',
+            timeline: ''
         }
     }
     handleChange = (e) => {
