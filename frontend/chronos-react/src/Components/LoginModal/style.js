@@ -66,7 +66,7 @@ export const Modal = style.div`
     #close {
         position: absolute;
         cursor: pointer;
-        top: 10px;
+        top: -40px;
         right: 32px;
         width: 22px;
         height: 22px;
@@ -113,6 +113,7 @@ export const Modal = style.div`
     footer {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         padding: 10px;
     }
 
@@ -137,6 +138,14 @@ export const Modal = style.div`
     p {
         color: white;
         display: flex;
+    }
+
+    h2 {
+        color: red;
+        display: flex;
+        align-content: center;
+
+
     }
 
 

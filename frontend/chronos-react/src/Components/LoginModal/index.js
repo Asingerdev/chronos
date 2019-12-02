@@ -7,8 +7,10 @@ class LoginModal extends Component {
         super();
 
         this.state = {
+            username: '',
             password: '',
-            email: ''
+            email: '',
+            showError: null
         }
     }
     handleChange = (e) => {
@@ -16,7 +18,6 @@ class LoginModal extends Component {
     }
     handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('hitting')
         const loginResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
             method: 'POST',
             credentials: 'include',
@@ -27,8 +28,11 @@ class LoginModal extends Component {
         });
         const parsedResponse = await loginResponse.json();
         if (parsedResponse.status.message === 'user is logged in') {
-            console.log('success login')
             this.props.closeAndLogUser(parsedResponse.data)
+        } else {
+            this.setState({
+                showError: true
+            })
         }
     }
     render() {
@@ -61,6 +65,9 @@ class LoginModal extends Component {
 
                         <footer>
                             <button id='submit'><p>Submit</p></button>
+                            {
+                                this.state.showError ? <h2>email or password is incorrect</h2> : null
+                            }
                         </footer>
                     </form>
                 </section>

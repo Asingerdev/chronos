@@ -66,7 +66,7 @@ export const Modal = style.div`
     #close {
         position: absolute;
         cursor: pointer;
-        top: 10px;
+        top: -40px;
         right: 32px;
         width: 22px;
         height: 22px;

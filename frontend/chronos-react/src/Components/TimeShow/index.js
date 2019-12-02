@@ -4,7 +4,6 @@ import AddEventModal from '../AddEventModal';
 import EditEventModal from '../EditEventModal';
 
 import { ShowDiv, Image } from './style';
-import StyleButton from './stylebutton';
 
 // <Route exact path="/timelines/:id" render={(props) => <TimeShow {...props} />}/
 
@@ -12,9 +11,9 @@ import StyleButton from './stylebutton';
 class TimeShow extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
-            timeline : {},
+            timeline: {},
             showAddModal: null,
             showEditModal: null,
             eventToEdit: {
@@ -31,7 +30,7 @@ class TimeShow extends Component {
     }
 
 
-    
+
 
     getTimeline = async () => {
         const timelineId = this.props.match.params.id;
@@ -80,7 +79,7 @@ class TimeShow extends Component {
         event.timeline = this.props.match.params.id;
         console.log(event)
         try {
-          
+
             const createdEventResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/events/`, {
                 credentials: 'include',
                 method: 'POST',
@@ -101,8 +100,8 @@ class TimeShow extends Component {
         }
     }
 
- 
-    
+
+
     closeAndEdit = async (e) => {
         e.preventDefault();
         try {
@@ -146,7 +145,7 @@ class TimeShow extends Component {
             }
         });
     }
-    
+
     showAddModal = () => {
         this.setState({
             showAddModal: true
@@ -159,46 +158,46 @@ class TimeShow extends Component {
         })
     }
 
-  
+
     render() {
         return (
-        <React.Fragment>
-           <ShowDiv>
+            <React.Fragment>
+                <ShowDiv>
                     <div>
-                    <h1>{this.state.timeline.title}</h1>
-                    <h4>Created: {this.state.timeline.created_at}</h4>
+                        <h1>{this.state.timeline.title}</h1>
+                        <h4>Created: {this.state.timeline.created_at}</h4>
                         <button onClick={this.showAddModal}>+ Add Event</button>
                         <h4>Events</h4>
                         <div>
                             <ul>
-                                
+
                                 {
-                                    this.state.events.map( (event) => {
-                                    return ( <li>
-                                        {JSON.stringify(event.event_name)}
-                                        <br/>
-                                        Date: {JSON.stringify(event.event_date)}
-                                        <br/>
-                                        {JSON.stringify(event.event_desc)}
-                                        {JSON.stringify(event.event_wiki)}
-                                        <br/>
-                                        <a href={event.event_option}>YouTube Link</a>
-                                        <br/>
-                                        <Image src={event.event_thumbnail} />
-                                        <br/>
-                                        <br/>
-                                        Event Creation: {JSON.stringify(event.created_at)}
+                                    this.state.events.map((event) => {
+                                        return (<li>
+                                            {JSON.stringify(event.event_name)}
+                                            <br />
+                                            Date: {JSON.stringify(event.event_date)}
+                                            <br />
+                                            {JSON.stringify(event.event_desc)}
+                                            {JSON.stringify(event.event_wiki)}
+                                            <br />
+                                            <a href={event.event_option}>YouTube Link</a>
+                                            <br />
+                                            <Image src={event.event_thumbnail} />
+                                            <br />
+                                            <br />
+                                            Event Creation: {JSON.stringify(event.created_at)}
                                         </li>
-                                        
-                                    )
-                                    } )
+
+                                        )
+                                    })
                                 }
-                                
+
                             </ul>
                         </div>
                     </div>
                     <div>
-                        
+
                         <h2>Date From: {this.state.timeline.date_from}</h2>
                         <h2>Date To: {this.state.timeline.date_to}</h2>
                         <Image src={this.state.timeline.thumbnail}></Image>
@@ -218,17 +217,17 @@ class TimeShow extends Component {
                                 :
                                 null
                         }
-                        
+
                     </div>
-                    
-           </ShowDiv>
-            
+
+                </ShowDiv>
 
 
-        </React.Fragment>
+
+            </React.Fragment>
         )
     }
-   
+
 
 
 };
