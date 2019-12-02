@@ -31,8 +31,10 @@ class TimeContainer extends Component {
         try {
             const timelines = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/timelines/`, {
                 credentials: 'include',
-                method: "Get",
-                "Content-Type": "application/json"
+                method: 'Get',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
             const parsedTimelines = await timelines.json();
             this.setState({
