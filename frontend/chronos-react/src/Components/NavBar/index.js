@@ -52,6 +52,14 @@ class NavBar extends Component {
         })
     }
 
+    handleLogout = async (e) => {
+        e.preventDefault();
+        this.setState({
+            loggedUser: false,
+            currentUser: {}
+        })
+    }
+
     render() {
         return (
             <NavStyle>
@@ -77,7 +85,7 @@ class NavBar extends Component {
                             {
                                 this.state.loggedUser
                                     ?
-                                    <NavLink>Logout</NavLink>
+                                    <NavLink onClick={this.handleLogout}>Logout</NavLink>
                                     :
                                     <NavLink onClick={this.openRegister}>Register</NavLink>
                             }

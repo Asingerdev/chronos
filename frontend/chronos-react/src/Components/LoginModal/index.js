@@ -16,6 +16,7 @@ class LoginModal extends Component {
     }
     handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('hitting')
         const loginResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
             method: 'POST',
             credentials: 'include',
