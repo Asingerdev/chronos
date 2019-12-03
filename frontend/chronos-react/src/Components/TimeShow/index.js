@@ -24,13 +24,12 @@ class TimeShow extends Component {
                 event_option: '',
                 event_thumbnail: ''
             },
-            events: []
+            events: [],
+            summaries: [],
+            search: ''
         }
 
     }
-
-
-
 
     getTimeline = async () => {
         const timelineId = this.props.match.params.id;
@@ -47,6 +46,33 @@ class TimeShow extends Component {
                 events: parsedTimeline.data.events
             });
         } catch (err) {
+            console.log(err);
+        }
+    }
+
+    getSummary = async () => {
+        try {
+            const summaries = await fetch(`https://en.wikipedia.org/w/api.php&action=query&list=search&srsearch=${this.state.search}&format=json`)
+            const parsedSummaries = await summaries.json();
+            console.log(summaries)
+        }
+
+
+        // let url = "https://en.wikipedia.org/w/api.php";
+
+        // const params = {
+        //     action: "query",
+        //     list: "search",
+        //     srsearch: "Nelson Mandela",
+        //     format: "json"
+        // };
+
+        // url = url + "?origin=*";
+        // Object.keys(params).forEach((key) => {
+        //     url += "&" + key + "=" + params[key];
+        // });
+
+        catch (err) {
             console.log(err);
         }
     }
@@ -70,9 +96,8 @@ class TimeShow extends Component {
 
     componentDidMount() {
         this.getTimeline()
+        this.getSummary()
     }
-
-
 
     closeAndAdd = async (e, event) => {
         e.preventDefault();
@@ -134,6 +159,12 @@ class TimeShow extends Component {
             eventToEdit: {
                 ...eventFromTheList
             }
+        })
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
         })
     }
 
