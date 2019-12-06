@@ -167,20 +167,20 @@ class TimeShow extends Component {
                     <div>
                     <h1>{this.state.timeline.title}</h1>
                     <h4>Created: {this.state.timeline.created_at}</h4>
-                        <button onClick={this.showAddModal}>+ Add Event</button>
-                        <h4>Events</h4>
+                        <StyleButton onClick={this.showAddModal}>+ Add Event</StyleButton>
+                        <h2>Events</h2>
                         <div>
                             <ul>
                                 
                                 {
                                     this.state.events.map( (event) => {
                                     return ( <li>
-                                        {JSON.stringify(event.event_name)}
+                                        <h3>{JSON.stringify(event.event_name)}</h3>
                                         <br/>
-                                        Date: {JSON.stringify(event.event_date)}
+                                        <p>Date: {JSON.stringify(event.event_date)}</p>
                                         <br/>
-                                        {JSON.stringify(event.event_desc)}
-                                        {JSON.stringify(event.event_wiki)}
+                                        <p>{JSON.stringify(event.event_desc)}</p>
+                                        <p>{JSON.stringify(event.event_wiki)}</p>
                                         <br/>
                                         <a href={event.event_option}>YouTube Link</a>
                                         <br/>
