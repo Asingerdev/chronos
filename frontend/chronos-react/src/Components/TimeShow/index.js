@@ -4,7 +4,6 @@ import AddEventModal from '../AddEventModal';
 import EditEventModal from '../EditEventModal';
 
 import { ShowDiv, Image } from './style';
-import StyleButton from './stylebutton';
 
 // <Route exact path="/timelines/:id" render={(props) => <TimeShow {...props} />}/
 
@@ -12,26 +11,24 @@ import StyleButton from './stylebutton';
 class TimeShow extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
-            timeline : {},
+            timeline: {},
             showAddModal: null,
             showEditModal: null,
             eventToEdit: {
                 event_name: '',
                 event_date: '',
                 date_desc: '',
-                event_wiki: '',
                 event_option: '',
                 event_thumbnail: ''
             },
-            events: []
+            eventWiki: '',
+            events: [],
+            search: ''
         }
 
     }
-
-
-    
 
     getTimeline = async () => {
         const timelineId = this.props.match.params.id;
@@ -52,35 +49,33 @@ class TimeShow extends Component {
         }
     }
 
-    // getEvents = async () => {
-    //     try {
-    //         const events = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/events/`, {
-    //             credentials: 'include',
-    //             method: "Get",
-    //             "Content-Type": "application/json"
-    //         });
-    //         const parsedEvents = await events.json();
-    //         this.setState({
-    //             events: parsedEvents.data
-    //         });
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
+    getSummary = async () => {
+        try {
+            // const summaries = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${this.state.search}&srprop=snippet&format=json&origin=*`)
+            const summaries = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${this.state.search}`)
+            const parsedSummaries = await summaries.json();
+            const eventWiki = parsedSummaries.extract;
+            this.setState({
+                event_wiki: eventWiki
+            })
+        }
 
+        catch (err) {
+            console.log(err);
+        }
+    }
 
     componentDidMount() {
         this.getTimeline()
+        this.getSummary()
     }
-
-
 
     closeAndAdd = async (e, event) => {
         e.preventDefault();
         event.timeline = this.props.match.params.id;
         console.log(event)
         try {
-          
+
             const createdEventResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/events/`, {
                 credentials: 'include',
                 method: 'POST',
@@ -101,8 +96,6 @@ class TimeShow extends Component {
         }
     }
 
- 
-    
     closeAndEdit = async (e) => {
         e.preventDefault();
         try {
@@ -138,6 +131,12 @@ class TimeShow extends Component {
         })
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     handleEditChange = (e) => {
         this.setState({
             eventToEdit: {
@@ -146,7 +145,7 @@ class TimeShow extends Component {
             }
         });
     }
-    
+
     showAddModal = () => {
         this.setState({
             showAddModal: true
@@ -159,20 +158,28 @@ class TimeShow extends Component {
         })
     }
 
-  
+
     render() {
         return (
-        <React.Fragment>
-           <ShowDiv>
+            <React.Fragment>
+                <ShowDiv>
                     <div>
+<<<<<<< HEAD
                     <h1>{this.state.timeline.title}</h1>
                     <h4>Created: {this.state.timeline.created_at}</h4>
                         <StyleButton onClick={this.showAddModal}>+ Add Event</StyleButton>
                         <h2>Events</h2>
+=======
+                        <h1>{this.state.timeline.title}</h1>
+                        <h4>Created: {this.state.timeline.created_at}</h4>
+                        <button onClick={this.showAddModal}>+ Add Event</button>
+                        <h4>Events</h4>
+>>>>>>> cb7264dd8f9297ce05bdcefb8821fe8e3582213a
                         <div>
                             <ul>
-                                
+
                                 {
+<<<<<<< HEAD
                                     this.state.events.map( (event) => {
                                     return ( <li>
                                         <h3>{JSON.stringify(event.event_name)}</h3>
@@ -188,17 +195,36 @@ class TimeShow extends Component {
                                         <br/>
                                         <br/>
                                         Event Creation: {JSON.stringify(event.created_at)}
+=======
+                                    this.state.events.map((event) => {
+                                        return (<li>
+                                            {JSON.stringify(event.event_name)}
+                                            <br />
+                                            Date: {JSON.stringify(event.event_date)}
+                                            <br />
+                                            {JSON.stringify(event.event_desc)}
+                                            <br />
+                                            <a href={event.event_option}>YouTube Link</a>
+                                            <br />
+                                            <Image src={event.event_thumbnail} />
+                                            <br />
+                                            <br />
+                                            Event Creation: {JSON.stringify(event.created_at)}
+                                            <input name='search' value={this.state.search} onChange={this.handleChange} />
+                                            <button onClick={this.getSummary}>Get event summary</button>
+                                            <div>{this.state.event_wiki}</div>
+>>>>>>> cb7264dd8f9297ce05bdcefb8821fe8e3582213a
                                         </li>
-                                        
-                                    )
-                                    } )
+
+                                        )
+                                    })
                                 }
-                                
+
                             </ul>
                         </div>
                     </div>
                     <div>
-                        
+
                         <h2>Date From: {this.state.timeline.date_from}</h2>
                         <h2>Date To: {this.state.timeline.date_to}</h2>
                         <Image src={this.state.timeline.thumbnail}></Image>
@@ -218,17 +244,17 @@ class TimeShow extends Component {
                                 :
                                 null
                         }
-                        
+
                     </div>
-                    
-           </ShowDiv>
-            
+
+                </ShowDiv>
 
 
-        </React.Fragment>
+
+            </React.Fragment >
         )
     }
-   
+
 
 
 };
