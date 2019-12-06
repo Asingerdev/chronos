@@ -20,17 +20,15 @@ class TimeShow extends Component {
                 event_name: '',
                 event_date: '',
                 date_desc: '',
-                event_wiki: '',
                 event_option: '',
                 event_thumbnail: ''
             },
-            events: []
+            eventWiki: '',
+            events: [],
+            search: ''
         }
 
     }
-
-
-
 
     getTimeline = async () => {
         const timelineId = this.props.match.params.id;
@@ -51,28 +49,26 @@ class TimeShow extends Component {
         }
     }
 
-    // getEvents = async () => {
-    //     try {
-    //         const events = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/events/`, {
-    //             credentials: 'include',
-    //             method: "Get",
-    //             "Content-Type": "application/json"
-    //         });
-    //         const parsedEvents = await events.json();
-    //         this.setState({
-    //             events: parsedEvents.data
-    //         });
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
+    getSummary = async () => {
+        try {
+            // const summaries = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${this.state.search}&srprop=snippet&format=json&origin=*`)
+            const summaries = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${this.state.search}`)
+            const parsedSummaries = await summaries.json();
+            const eventWiki = parsedSummaries.extract;
+            this.setState({
+                event_wiki: eventWiki
+            })
+        }
 
+        catch (err) {
+            console.log(err);
+        }
+    }
 
     componentDidMount() {
         this.getTimeline()
+        this.getSummary()
     }
-
-
 
     closeAndAdd = async (e, event) => {
         e.preventDefault();
@@ -99,8 +95,6 @@ class TimeShow extends Component {
             console.log(err);
         }
     }
-
-
 
     closeAndEdit = async (e) => {
         e.preventDefault();
@@ -134,6 +128,12 @@ class TimeShow extends Component {
             eventToEdit: {
                 ...eventFromTheList
             }
+        })
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
         })
     }
 
@@ -179,7 +179,6 @@ class TimeShow extends Component {
                                             Date: {JSON.stringify(event.event_date)}
                                             <br />
                                             {JSON.stringify(event.event_desc)}
-                                            {JSON.stringify(event.event_wiki)}
                                             <br />
                                             <a href={event.event_option}>YouTube Link</a>
                                             <br />
@@ -187,6 +186,9 @@ class TimeShow extends Component {
                                             <br />
                                             <br />
                                             Event Creation: {JSON.stringify(event.created_at)}
+                                            <input name='search' value={this.state.search} onChange={this.handleChange} />
+                                            <button onClick={this.getSummary}>Get event summary</button>
+                                            <div>{this.state.event_wiki}</div>
                                         </li>
 
                                         )
@@ -224,7 +226,7 @@ class TimeShow extends Component {
 
 
 
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 
