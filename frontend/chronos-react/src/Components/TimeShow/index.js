@@ -164,38 +164,14 @@ class TimeShow extends Component {
             <React.Fragment>
                 <ShowDiv>
                     <div>
-<<<<<<< HEAD
-                    <h1>{this.state.timeline.title}</h1>
-                    <h4>Created: {this.state.timeline.created_at}</h4>
-                        <StyleButton onClick={this.showAddModal}>+ Add Event</StyleButton>
-                        <h2>Events</h2>
-=======
                         <h1>{this.state.timeline.title}</h1>
                         <h4>Created: {this.state.timeline.created_at}</h4>
                         <button onClick={this.showAddModal}>+ Add Event</button>
                         <h4>Events</h4>
->>>>>>> cb7264dd8f9297ce05bdcefb8821fe8e3582213a
                         <div>
                             <ul>
 
                                 {
-<<<<<<< HEAD
-                                    this.state.events.map( (event) => {
-                                    return ( <li>
-                                        <h3>{JSON.stringify(event.event_name)}</h3>
-                                        <br/>
-                                        <p>Date: {JSON.stringify(event.event_date)}</p>
-                                        <br/>
-                                        <p>{JSON.stringify(event.event_desc)}</p>
-                                        <p>{JSON.stringify(event.event_wiki)}</p>
-                                        <br/>
-                                        <a href={event.event_option}>YouTube Link</a>
-                                        <br/>
-                                        <Image src={event.event_thumbnail} />
-                                        <br/>
-                                        <br/>
-                                        Event Creation: {JSON.stringify(event.created_at)}
-=======
                                     this.state.events.map((event) => {
                                         return (<li>
                                             {JSON.stringify(event.event_name)}
@@ -213,7 +189,6 @@ class TimeShow extends Component {
                                             <input name='search' value={this.state.search} onChange={this.handleChange} />
                                             <button onClick={this.getSummary}>Get event summary</button>
                                             <div>{this.state.event_wiki}</div>
->>>>>>> cb7264dd8f9297ce05bdcefb8821fe8e3582213a
                                         </li>
 
                                         )
