@@ -11,6 +11,10 @@ export const ShowDiv = style.div`
     flex: 33%;
     padding: 0 4px;
   }
+
+  p {
+    font-size: 12px;
+  }
 `;
 
 export const Image = style.img`
